@@ -24,6 +24,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 24px;
   margin-bottom: 16px;
   font-weight: 600;
+  text-align: center;
 }
 
 /* We want the headings to be a little bigger than the paragraph text */
@@ -37,6 +38,13 @@ h2 {
 
 .small {
   font-size: 1.25em;
+}
+
+h4 {
+  color: darkslategrey;
+  font-size: 1.00em;
+  font-style: italic;
+  font-weight: 500;
 }
 
 /* Paragraph */
