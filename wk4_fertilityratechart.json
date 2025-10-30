@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": {
+    "text": "Indonesia Fertility Rate",
+    "subtitle": "Sourve: UN Population Division via World Bank"
+  },
+
+  "mark": "line",
+  "width" : 500,
+  "height" : 200,
+  "padding" : 5,
+
+  "data": {
+    "url": "https://api.worldbank.org/v2/country/idn;kor/indicator/SP.DYN.TFRT.IN?format=json&date=1960:2025&per_page=160",
+
+    "format": {
+      "property": "[1]"
+    }
+  },
+
+  "encoding": {
+    "x": {
+      "field": "date", 
+      "type": "temporal",
+      "title": "",
+      "axis": {"grid": false}
+    },
+
+    "color": {"field": "countryiso3code", "title": "Country"},
+
+    "y": {
+      "field": "value", 
+      "type": "quantitative",
+      "title": "",
+      "axis": {"titleAngle": 0}
+      }
+  }
+}

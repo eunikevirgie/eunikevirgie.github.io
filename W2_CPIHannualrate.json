@@ -1,0 +1,47 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "description": "CPIH Annual Rate 00: All Times 2015-100",
+
+  "title" : "CPIH Annual Rate 00: All Times 2015-100",
+
+  "width" : 500,
+  "height" : 200,
+  "padding" : 5,
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/eunikevirgie/eunikevirgie.github.io/refs/heads/main/CPIH%20Annual%20Rate.csv",
+
+    "format": {"type": "dsv", "delimiter": ";"}
+  },
+
+  "mark": {
+    "type": "area",
+    "line": {
+      "color": "darkblue"
+    },
+    "color": {
+      "x1": 1,
+      "y1": 1,
+      "x2": 1,
+      "y2": 0,
+      "gradient": "linear",
+      "stops": [
+        {
+          "offset": 0,
+          "color": "white"
+        },
+        {
+          "offset": 1,
+          "color": "darkblue"
+        }
+      ]
+    }
+  },
+
+  "encoding": {
+    "x": {"field": "Date", "type": "temporal"},
+    "y":{"field": "Value", "type": "quantitative"}
+  }
+
+}
