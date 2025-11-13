@@ -62,39 +62,33 @@
     <!-- We're organising the page into sections, with each section containing a chart, title and a description -->
     <section>
         <div class="chart-description">
-            <h2>CC1: Hosting.</h2>
+            <h2>CC1 - Hosting. Display charts in your own site.</h2>
                 <h3> 
                     <strong>Task:</strong> Set up a GitHub account and live page using GitHub pages.<br>
                     Add two charts using the vegaEmbed function.<br>
             </h3>
-                <p>
-                UK Labor Market Over the Coronavirus Pandemic
-                Using the most common metric of labour market performance (unemployment), not much can be observed over the whole of the pandemic that was unusual. Prior to 2020, the UK labour market had been performing rather well, with the national unemployment rate hovering around 4-5%. But the weekly unemployment rate in the first months of the Covid-19 crisis was well below the average of the past five years.
-            </p>
         </div>
         <figure id="Location1A" style="display: flex; justify-content: center;"></figure> <!-- you do NOT want a "#" here, just put the "#" below on the vegaEmbed  -->
-        <div class="chart-description">
-            <p>
-                There has also not been any obvious reduction in wages. In the 2008-11 downturn, there were notable wage freezes for many workers, which arguably mitigated the need for mass layoffs. Yet data shows that average weekly wage levels (adjusted for inflation) appear to have grown strongly over the crisis.
-            </p>
-        </div>
         <figure id="Location1B" style="display: flex; justify-content: center;"></figure> <!-- you do NOT want a "#" here, just put the "#" below on the vegaEmbed  -->
+            <p>
+                Source: <a href="https://www.economicsobservatory.com/a-year-in-the-uk-labour-market-whats-happened-over-the-coronavirus-pandemic">Economics Observatory</a>
+            </p>
     </section>
 
     <section>
         <div class="chart-description">
-            <h2>CC2: Building</h2>
+            <h2>CC2 - Building. Create your own visualisations.</h2>
                 <h3> 
                     <strong>Task:</strong> Build two seperate charts using the "create" tool from Economics Observatory Data Hub.<br>
                     Embed the two charts in your page using the VegaEmbed function.<br>
                     <strong> Go to <a href="https://www.economicsobservatory.com/create">Create Tool</a> </strong>
             </h3>
-            <p> 
-                We've organised the page into sections, with each section containing a chart, title and a description. Here, we can describe the chart and give some context.
-                As a first example, we're using a basic chart from our repo.
-            </p>
         </div>
-        <figure id="Location2"></figure> <!-- you do NOT want a "#" here, just put the "#" below on the vegaEmbed  -->
+        <figure id="Location2A" style="display: flex; justify-content: center;"></figure> 
+        <figure id="Location2B" style="display: flex; justify-content: center;"></figure> 
+            <p>
+                Code: <a href="https://www.linkedin.com/in/eunikevirgiee">Graph 1</a> | <a href="https://github.com/eunikevirgie">Graph 2</a>
+            </p>
     </section>
 
    <section>
@@ -142,14 +136,16 @@
 
         let figure_1A_spec = "https://raw.githubusercontent.com/EconomicsObservatory/ECOvisualisations/refs/heads/main/articles/2021-04-14-a-year-in-the-uk-labour-market-whats-happened-over-the-coronavirus-pandemic/visualisation/fig1a_unemployment.json"; // We're storing the URL of the graph we want to display in a variable
         let figure_1B_spec = "https://raw.githubusercontent.com/EconomicsObservatory/ECOvisualisations/refs/heads/main/articles/2021-04-14-a-year-in-the-uk-labour-market-whats-happened-over-the-coronavirus-pandemic/visualisation/fig3_weekly_wage_levels.json"
-        let figure_2_spec = "https://raw.githubusercontent.com/EconomicsObservatory/datavis/refs/heads/main/newsletters/2025-06-27-war-and-inflation/visualisation/fig4_inflation-big4.json"; // You should have a spec for a graph in this same folder. Just specify its name here, e.g. let figure_1_spec = "chart1.json"
+        let figure_2A_spec = "CC2_chart1.json";
+        let figure_2B_spec = "CC2_chart2.json";
         let figure_3_spec = "W2_CPIHannualrate.json";
         let figure_4_spec = "shiller_pe_ratio_chart.json";
         let figure_5_spec = "wk4_fertilityratechart.json";
         
-        vegaEmbed('#Location1A', figure_1A_spec) // We're using the vegaEmbed function to put a graph in the element with id figure_1
-        vegaEmbed('#Location1B', figure_1B_spec) // We're using the vegaEmbed function to put a graph in the element with id figure_1
-        vegaEmbed('#Location2', figure_2_spec)
+        vegaEmbed('#Location1A', figure_1A_spec) // We're using the vegaEmbed function to put a graph in the element with id figure_1A
+        vegaEmbed('#Location1B', figure_1B_spec) 
+        vegaEmbed('#Location2A', figure_2A_spec)
+        vegaEmbed('#Location2B', figure_2B_spec)
         vegaEmbed('#Location3', figure_3_spec)
         vegaEmbed('#Location4', figure_4_spec)
         vegaEmbed('#Location5', figure_5_spec)
