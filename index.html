@@ -94,13 +94,14 @@
 
    <section>
         <div class="chart-description">
-            <h2>Section 3: CPIH Annual Rate</h2>
-            <p> <!-- This is a paragraph, it's the main way to display text on a web page -->
-                We've organised the page into sections, with each section containing a chart, title and a description. Here, we can describe the chart and give some context.
-                As a first example, we're using a basic chart from our repo.
-            </p>
+            <h2>CC3 - Debate. Use a visualisation in policy commentary.</h2>
+                <h3> 
+                    <strong>Task:</strong> Set out a policy topic.<br>
+                    Produce two charts that support or refute or related to a topic of policy debate.<br>
+                    Comment on what you find from the charts.<br>
+            </h3>
         </div>
-        <figure id="Location3"></figure> <!-- you do NOT want a "#" here, just put the "#" below on the vegaEmbed -->
+        <figure id="Location3A" style="display: flex; justify-content: center;"></figure> 
     </section>
 
     <section>
@@ -139,7 +140,7 @@
         let figure_1B_spec = "https://raw.githubusercontent.com/EconomicsObservatory/ECOvisualisations/refs/heads/main/articles/2021-04-14-a-year-in-the-uk-labour-market-whats-happened-over-the-coronavirus-pandemic/visualisation/fig3_weekly_wage_levels.json"
         let figure_2A_spec = "CC2_chart1.json";
         let figure_2B_spec = "CC2_chart2.json";
-        let figure_3_spec = "W2_CPIHannualrate.json";
+        let figure_3A_spec = "CC3_chart1.json";
         let figure_4_spec = "shiller_pe_ratio_chart.json";
         let figure_5_spec = "wk4_fertilityratechart.json";
         
@@ -147,7 +148,7 @@
         vegaEmbed('#Location1B', figure_1B_spec) 
         vegaEmbed('#Location2A', figure_2A_spec)
         vegaEmbed('#Location2B', figure_2B_spec)
-        vegaEmbed('#Location3', figure_3_spec)
+        vegaEmbed('#Location3A', figure_3A_spec)
         vegaEmbed('#Location4', figure_4_spec)
         vegaEmbed('#Location5', figure_5_spec)
 
