@@ -26,29 +26,65 @@
       "type": "json"
     }
   },
-  "mark": {
-    "type": "line",
-    "color": "#36b7b4",
-    "strokeWidth": 2
-  },
-  "encoding": {
-    "x": {
-      "field": "date",
-      "type": "temporal",
-      "axis": {
-        "title": "",
-        "titleColor": "#122B39",
-        "grid": false
+"layer": [
+    {
+      "mark": {"type": "line", "color": "#36b7b4", "strokeWidth": 2},
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal",
+          "axis": {"title": "", "grid": false}
+        },
+        "y": {
+          "field": "value",
+          "type": "quantitative",
+          "axis": {"title": "", "grid": false}
+        }
       }
     },
-    "y": {
-      "field": "value",
-      "type": "quantitative",
-      "axis": {
-        "title": "",
-        "titleColor": "#122B39",
-        "grid": false
+
+    {
+      "mark": {"type": "rule", "color": "#999", "strokeWidth": 1},
+      "params": [
+        {
+          "name": "cursor",
+          "select": {
+            "type": "point",
+            "on": "mousemove",
+            "fields": ["date"],
+            "nearest": false
+          }
+        }
+      ],
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"},
+        "opacity": {
+          "condition": {"param": "cursor", "empty": false, "value": 1},
+          "value": 0
+        }
+      }
+    },
+
+    {
+      "mark": {"type": "circle", "size": 60, "color": "#36b7b4"},
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "value",
+          "type": "quantitative"
+        },
+        "opacity": {
+          "condition": {"param": "cursor", "empty": false, "value": 1},
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "date", "type": "temporal", "title": "Date"},
+          {"field": "value", "type": "quantitative", "title": "Inflation (%)"}
+        ]
       }
     }
-  }
+  ]
 }
