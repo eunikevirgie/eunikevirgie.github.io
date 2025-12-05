@@ -21,19 +21,63 @@
     "format": {"type": "dsv", "delimiter": ";"}
   },
 
-  "mark": {
-    "type": "line",
-    "color": "#36b7b4",
-    "point": {"color": "#36b7b4"} 
-  },
-
-  "encoding": {
-    "x": {"field": "Date", "type": "temporal"},
-    "y":{"field": "Value", "type": "quantitative"},
-    "tooltip": [
-      {"field": "Date", "type": "temporal", "title": "Date"},
-      {"field": "Value", "type": "quantitative", "title": "CPIH Annual Rate (%)"}
-    ]
-  }
-
+  "layer": [
+    {
+      "mark": {"type": "line", "color": "#36b7b4", "point": {"color": "#36b7b4"}, "strokeWidth": 2},
+      "encoding": {
+        "x": {
+          "field": "Date",
+          "type": "temporal",
+          "axis": {"title": "", "grid": false}
+        },
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "axis": {"title": "", "grid": false}
+        }
+      }
+    },
+    {
+      "mark": {"type": "rule", "color": "#999", "strokeWidth": 1},
+      "params": [
+        {
+          "name": "cursor",
+          "select": {
+            "type": "point",
+            "on": "mousemove",
+            "fields": ["Date"],
+            "nearest": false
+          }
+        }
+      ],
+      "encoding": {
+        "x": {"field": "Date", "type": "temporal"},
+        "opacity": {
+          "condition": {"param": "cursor", "empty": false, "value": 1},
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {"type": "circle", "size": 60, "color": "#36b7b4"},
+      "encoding": {
+        "x": {
+          "field": "Date",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "Value",
+          "type": "quantitative"
+        },
+        "opacity": {
+          "condition": {"param": "cursor", "empty": false, "value": 1},
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "Date", "type": "temporal", "title": "Date"},
+          {"field": "Value", "type": "quantitative", "title": "CPIH Annual Rate (%)"}
+        ]
+      }
+    }
+  ]
 }
