@@ -1,0 +1,65 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Average number of likes per Facebook post",
+    "subtitle": ["2016, '000 (in thousands)", "Source: Facebook"],
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFontSize": 14,
+    "subtitleColor": "#666"
+  },
+  "width": 500,
+  "height": 250,
+  "data": {
+    "values": [
+      {"name": "Jeremy Corbyn", "likes": 5210},
+      {"name": "Labour Party", "likes": 723},
+      {"name": "Momentum", "likes": 310},
+      {"name": "Owen Smith", "likes": 234},
+      {"name": "Andy Burnham", "likes": 221},
+      {"name": "Saving Labour", "likes": 165}
+    ]
+  },
+  "mark": {
+    "type": "bar",
+    "color": "#36b7b4"
+  },
+  "encoding": {
+    "y": {
+      "field": "name",
+      "type": "nominal",
+      "axis": {
+        "title": null,
+        "labelFontSize": 13,
+        "labelFontStyle": {
+              "condition": {"test": "datum.label == 'Jeremy Corbyn'", "value": "bold"},
+              "value": "normal"
+            }
+      },
+      "sort": "-x"
+    },
+    "x": {
+      "field": "likes",
+      "type": "quantitative",
+      "scale": {
+        "domain": [0, 6000]
+      },
+      "axis": {
+        "title": null,
+        "tickCount": 7,
+        "labelExpr": "datum.value / 1000",
+        "grid": true,
+        "gridOpacity": 0.3
+      }
+    }
+  },
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "domain": false,
+      "tickSize": 0
+    }
+  }
+}

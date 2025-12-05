@@ -1,0 +1,63 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {
+    "url": "https://api.worldbank.org/v2/country/EAS;ECS;LCN;MEA;NAC;SAS;SSF/indicator/SP.DYN.IMRT.IN?format=json&per_page=500&date=1990:2025",
+    "format": {"property": "[1]"}
+  },
+  "width": 500,
+  "height": 350,
+  "title": {
+    "text": "Infant Mortality Rate by Region (1990-2025)",
+    "subtitle": "Deaths per 1,000 live births, showing global progress in child health"
+  },
+  "params": [
+    {
+      "name": "hover",
+      "select": {
+        "type": "point",
+        "fields": ["country.value"],
+        "on": "mouseover"
+      }
+    }
+  ],
+  "mark": {"type": "line", "strokeWidth": 2, "point": true},
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "title": "Year",
+      "axis": {"grid": false}
+    },
+    "y": {
+      "field": "value", 
+      "type": "quantitative", 
+      "title": "Infant Mortality Rate (per 1,000 live births)"
+    },
+    "color": {
+      "field": "country.value",
+      "type": "nominal",
+      "title": "Region",
+      "scale": {
+        "domain": [
+          "East Asia & Pacific",
+          "Europe & Central Asia",
+          "Latin America & Caribbean",
+          "Middle East & North Africa",
+          "North America",
+          "South Asia",
+          "Sub-Saharan Africa"
+        ],
+        "range": ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2"]
+      }
+    },
+    "opacity": {
+      "condition": {"param": "hover", "value": 1},
+      "value": 0.2
+    },
+    "tooltip": [
+      {"field": "country.value", "type": "nominal", "title": "Region"},
+      {"field": "date", "type": "temporal", "title": "Year", "timeUnit": "year"},
+      {"field": "value", "type": "quantitative", "title": "Infant Mortality Rate", "format": ".2f"}
+    ]
+  }
+}

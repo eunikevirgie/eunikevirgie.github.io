@@ -1,0 +1,120 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Average number of likes per Facebook post",
+    "subtitle": ["2016", "Source: Facebook"],
+    "anchor": "start",
+    "fontSize": 16,
+    "subtitleFontSize": 14,
+    "subtitleColor": "#555",
+    "offset": 10
+  },
+  "data": {
+    "values": [
+      {"category": "Jeremy Corbyn", "likes": 1400, "displayValue": "5,210", "order": 1},
+      {"category": "Labour Party", "likes": 800, "order": 2},
+      {"category": "Momentum", "likes": 250, "order": 3},
+      {"category": "Owen Smith", "likes": 180, "order": 4},
+      {"category": "Andy Burnham", "likes": 160, "order": 5},
+      {"category": "Saving Labour", "likes": 100, "order": 6}
+    ]
+  },
+  "width": 190,
+  "height": 190,
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 4
+      },
+      "encoding": {
+        "y": {
+          "field": "category",
+          "type": "nominal",
+          "title": null,
+          "sort": {"field": "order", "order": "ascending"},
+          "axis": {
+            "labelFontSize": 14,
+            "labelPadding": 10,
+            "labelFontWeight": {
+              "condition": {"test": "datum.label == 'Jeremy Corbyn'", "value": "bold"},
+              "value": "normal"
+            },
+            "labelFontStyle": {
+              "condition": {
+                "test": "datum.category == 'Labour Party' || datum.category == 'Momentum' || datum.category == 'Saving Labour'",
+                "value": "italic"
+              },
+              "value": "normal"
+            }
+          }
+        },
+        "x": {
+          "field": "likes",
+          "type": "quantitative",
+          "title": null,
+          "scale": {"domain": [0, 1000]},
+          "axis": {
+            "values": [0, 250, 500, 750, 1000],
+            "labelFontSize": 12,
+            "grid": true,
+            "gridColor": "#ffffff",
+            "gridWidth": 2
+          }
+        },
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Jeremy Corbyn",
+              "Labour Party",
+              "Momentum",
+              "Owen Smith",
+              "Andy Burnham",
+              "Saving Labour"
+            ],
+            "range": ["#8B4513", "#E57373", "#EF9A9A", "#FFAB91", "#FFAB91", "#FFAB91"]
+          },
+          "legend": null
+        },
+        "order": {"field": "order", "type": "quantitative"}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -5,
+        "color": "white",
+        "fontSize": 14,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "y": {
+          "field": "category",
+          "type": "nominal",
+          "sort": {"field": "order", "order": "ascending"}
+        },
+        "x": {"field": "likes", "type": "quantitative"},
+        "text": {"field": "displayValue", "type": "nominal"},
+        "opacity": {
+          "condition": {
+            "test": "datum.category == 'Jeremy Corbyn'",
+            "value": 1
+          },
+          "value": 0
+        },
+        "order": {"field": "order", "type": "quantitative"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {
+      "domainColor": "#999",
+      "tickColor": "#999"
+    },
+    "background": "#e2eff7"
+  }
+}
