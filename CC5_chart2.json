@@ -1,0 +1,124 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Premier League 2024-25: Attack vs Defense Contribution",
+    "subtitle": ["Green = Goals Scored (Attack) | Red = Goals Conceded (Defense)", "Center Number = Goal Difference"],
+    "fontSize": 18,
+    "fontWeight": "bold",
+    "anchor": "start"
+  },
+  "width": 500,
+  "height": 500,
+  "data": {
+    "url": "https://raw.githubusercontent.com/eunikevirgie/eunikevirgie.github.io/main/CC5_table1.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {
+      "calculate": "datum.Position + '. ' + datum.Team",
+      "as": "TeamLabel"
+    },
+    {
+      "calculate": "datum.GF - datum.GA",
+      "as": "GD_Calculated"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "rule", "strokeWidth": 2, "color": "black"},
+      "encoding": {"x": {"datum": 0}}
+    },
+    {
+      "mark": {"type": "bar", "color": "#e74c3c", "opacity": 0.85},
+      "encoding": {
+        "y": {
+          "field": "TeamLabel",
+          "type": "nominal",
+          "sort": {"field": "Position", "order": "ascending"},
+          "axis": {"title": null, "labelFontSize": 11, "labelLimit": 250}
+        },
+        "x": {
+          "field": "GA_negative",
+          "type": "quantitative",
+          "title": "← Goals Conceded (Defense)          Goals Scored (Attack) →",
+          "scale": {"domain": [-95, 95]},
+          "axis": {"titleFontSize": 12, "titleFontWeight": "bold", "titlePadding": 10}
+        },
+        "tooltip": [
+          {"field": "Team", "type": "nominal", "title": "Team"},
+          {"field": "Position", "type": "quantitative", "title": "Position"},
+          {"field": "GA", "type": "quantitative", "title": "Goals Against"},
+          {"field": "GF", "type": "quantitative", "title": "Goals For"},
+          {"field": "GD_Calculated", "type": "quantitative", "title": "Goal Difference"},
+          {"field": "Pts", "type": "quantitative", "title": "Points"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "bar", "color": "#2ecc71", "opacity": 0.85},
+      "encoding": {
+        "y": {"field": "TeamLabel", "type": "nominal", "sort": {"field": "Position", "order": "ascending"}},
+        "x": {"field": "GF", "type": "quantitative"},
+        "tooltip": [
+          {"field": "Team", "type": "nominal", "title": "Team"},
+          {"field": "Position", "type": "quantitative", "title": "Position"},
+          {"field": "GA", "type": "quantitative", "title": "Goals Against"},
+          {"field": "GF", "type": "quantitative", "title": "Goals For"},
+          {"field": "GD_Calculated", "type": "quantitative", "title": "Goal Difference"},
+          {"field": "Pts", "type": "quantitative", "title": "Points"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "shape": "square",
+        "size": 400,
+        "color": "white",
+        "filled": true,
+        "opacity": 1
+      },
+      "encoding": {
+        "y": {"field": "TeamLabel", "type": "nominal", "sort": {"field": "Position", "order": "ascending"}},
+        "x": {"datum": 0}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "align": "center"
+      },
+      "encoding": {
+        "y": {"field": "TeamLabel", "type": "nominal", "sort": {"field": "Position", "order": "ascending"}},
+        "x": {"datum": 0},
+        "text": {"field": "GD_Calculated", "type": "quantitative", "format": "+d"},
+        "color": {
+          "condition": {"test": "datum.GD_Calculated > 0", "value": "#27ae60"},
+          "value": "#c0392b"
+        }
+      }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 9, "dx": 3, "align": "left", "color": "#27ae60"},
+      "encoding": {
+        "y": {"field": "TeamLabel", "type": "nominal", "sort": {"field": "Position", "order": "ascending"}},
+        "x": {"field": "GF", "type": "quantitative"},
+        "text": {"field": "GF", "type": "quantitative"}
+      }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 9, "dx": -3, "align": "right", "color": "#c0392b"},
+      "encoding": {
+        "y": {"field": "TeamLabel", "type": "nominal", "sort": {"field": "Position", "order": "ascending"}},
+        "x": {"field": "GA_negative", "type": "quantitative"},
+        "text": {"field": "GA", "type": "quantitative"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"grid": true, "gridOpacity": 0.2, "gridDash": [2, 2]}
+  }
+}
