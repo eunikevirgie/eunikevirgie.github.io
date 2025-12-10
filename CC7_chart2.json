@@ -1,0 +1,79 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Coordinate map of Wales showing population density by local authority",
+  "title": {
+    "text": "Population density",
+    "subtitle": "Number of people resident per square kilometre, 2024",
+    "fontSize": 14,
+    "subtitleFontSize": 11,
+    "font": "Arial",
+    "anchor": "start"
+  },
+  "width": 300,
+  "height": 400,
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/jhellingsdata/RADataHub/refs/heads/main/MappingWorkshop/geo_data/LAD_WLS_2025_05.topojson",
+        "format": {"type": "topojson", "feature": "object_name"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "lightgray",
+        "stroke": "white",
+        "strokeWidth": 1
+      },
+      "projection": {"type": "mercator"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/jhellingsdata/RADataHub/refs/heads/main/MappingWorkshop/geo_data/LAD_WLS_2025_05.topojson",
+        "format": {"type": "topojson", "feature": "object_name"}
+      },
+      "transform": [
+        {"calculate": "geoCentroid(null, datum)", "as": "centroid"},
+        {"calculate": "datum.centroid[0]", "as": "longitude"},
+        {"calculate": "datum.centroid[1]", "as": "latitude"},
+        {
+          "lookup": "properties.LAD25CD",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/eunikevirgie/eunikevirgie.github.io/refs/heads/main/CC7_Table2.csv"
+            },
+            "key": "Area code",
+            "fields": ["value", "date"]
+          }
+        },
+        {
+          "filter": "datum.value != null && datum.date == 2024"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "opacity": 0.8
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "size": {
+          "field": "value",
+          "type": "quantitative",
+          "scale": {"range": [50, 1500]},
+          "title": "Density (per km²)"
+        },
+        "color": {
+          "field": "value",
+          "type": "quantitative",
+          "scale": {"scheme": "oranges"},
+          "title": "Density (per km²)"
+        },
+        "tooltip": [
+          {"field": "properties.LAD25NM", "type": "nominal", "title": "Local Authority"},
+          {"field": "value", "type": "quantitative", "title": "Population Density (per km²)", "format": ",.0f"},
+          {"field": "date", "type": "quantitative", "title": "Year"}
+        ]
+      },
+      "projection": {"type": "mercator"}
+    }
+  ]
+}
