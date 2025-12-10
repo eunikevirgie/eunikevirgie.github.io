@@ -133,6 +133,26 @@
                 <strong>Chart Replication: Gender Distribution by Ethnicity</strong><br>
                 Source: <a href="https://www.economist.com/britain/2016/08/13/the-metamorphosis">The Economist</a>                     
             </h3>
+            <style>
+                .side-by-side {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: flex-start;
+                    gap: 20px;
+                    flex-wrap: nowrap;
+                }
+            .column {
+                text-align: center;
+            }
+
+            .column:first-child {
+                flex: 0 0 25%;  /* Kotak pertama (Version 1) lebih kecil */
+            }
+
+            .column:nth-child(2) {
+                flex: 0 0 45%;  /* Kotak kedua (Version 2) lebih gede */
+            }
+            </style>
                 <div class="side-by-side">
                     <div class="column">
                         <p style= "text-align: center;"> <strong>Version 1: Original Chart</strong></p>
