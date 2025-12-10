@@ -59,7 +59,7 @@
           "field": "value",
           "type": "quantitative",
           "scale": {"range": [50, 1500]},
-          "title": "Density (per km²)"
+          "title": null
         },
         "color": {
           "field": "value",
@@ -69,8 +69,7 @@
         },
         "tooltip": [
           {"field": "properties.LAD25NM", "type": "nominal", "title": "Local Authority"},
-          {"field": "value", "type": "quantitative", "title": "Population Density (per km²)", "format": ",.0f"},
-          {"field": "date", "type": "quantitative", "title": "Year"}
+          {"field": "value", "type": "quantitative", "title": "Population Density (per km²)", "format": ",.0f"}
         ]
       },
       "projection": {"type": "mercator"}
