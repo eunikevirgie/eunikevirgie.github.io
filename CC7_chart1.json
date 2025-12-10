@@ -1,0 +1,53 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Choropleth map of Scotland showing average income (2023) by local authority area",
+  "title": {
+    "text": "Gross disposable household income per head",
+    "subtitle": "Average income per person (£) after taxes and direct benefits, 2023",
+    "fontSize": 14,
+    "subtitleFontSize": 11,
+    "font": "Arial",
+    "anchor": "start"
+  }, 
+  "width": 300,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/jhellingsdata/RADataHub/refs/heads/main/MappingWorkshop/geo_data/LAD_SCT_2025_05.topojson",
+    "format": {"type": "topojson", "feature": "object_name"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.LAD25CD",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/eunikevirgie/eunikevirgie.github.io/refs/heads/main/CC7_Table1.csv"
+          },
+        "key": "geo_id",
+        "fields": ["value", "Date"]
+      }
+    },
+    {
+      "filter": "datum.Date == 2023"
+    }
+  ],
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 0.5
+  },
+  "encoding": {
+    "color": {
+      "field": "value",
+      "type": "quantitative",
+      "scale": {"scheme": "blues"},
+      "title": null
+    },
+    "tooltip": [
+      {"field": "properties.LAD25NM", "type": "nominal", "title": "Local Authority"},
+      {"field": "value", "type": "quantitative", "title": "Wages (£)", "format": ",.0f"}
+    ]
+  },
+  "projection": {
+    "type": "mercator"
+  }
+}
