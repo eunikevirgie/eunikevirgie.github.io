@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-34c8b22df3ee25e2326a12994e62dda5"}, "mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "store_label", "type": "nominal"}, {"field": "median_price", "type": "quantitative"}, {"field": "deviation", "type": "quantitative"}, {"field": "n_obs", "type": "quantitative"}], "x": {"axis": {"format": "+.2f"}, "field": "deviation", "title": "Deviation from overall median price (\u00a3)", "type": "quantitative"}, "y": {"field": "store_label", "sort": "-x", "title": "Supermarkets (ranked by price deviation)", "type": "nominal"}}, "height": 400, "title": {"text": "Which supermarkets price whisky above or below the median?", "subtitle": "Store-level median prices, last 60 days"}, "width": 700, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-34c8b22df3ee25e2326a12994e62dda5": [{"store_id": 1, "median_price": 35.5, "n_obs": 1098, "deviation": 8.009999999999998, "store_label": "Store 1"}, {"store_id": 2, "median_price": 30.0, "n_obs": 740, "deviation": 2.509999999999998, "store_label": "Store 2"}, {"store_id": 3, "median_price": 24.98, "n_obs": 73, "deviation": -2.5100000000000016, "store_label": "Store 3"}, {"store_id": 9, "median_price": 24.75, "n_obs": 64, "deviation": -2.740000000000002, "store_label": "Store 9"}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
