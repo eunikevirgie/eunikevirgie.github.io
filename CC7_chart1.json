@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "description": "Choropleth map of Scotland showing average income (2023) by local authority area",
   "title": {
-    "text": "Gross disposable household income per head",
+    "text": "Gross disposable household income per head in Scotland",
     "subtitle": "Average income per person (£) after taxes and direct benefits, 2023",
     "fontSize": 14,
     "subtitleFontSize": 11,
