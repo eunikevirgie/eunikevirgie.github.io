@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "description": "Coordinate map of Wales showing population density by local authority",
   "title": {
-    "text": "Population density",
+    "text": "Population density in Wales",
     "subtitle": "Number of people resident per square kilometre, 2024",
     "fontSize": 14,
     "subtitleFontSize": 11,
