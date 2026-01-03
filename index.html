@@ -1,333 +1,39 @@
-<!-- This HTML file provides a simple example of a portfolio page. It contains a header, a few sections, and a few charts. -->
-<!-- It works with the three css files in this folder: example1.css, example2.css and example3.css. -->
-<!-- The HTML file defines the structure of the page, and the CSS files define how it looks. -->
-<!-- The CSS examples are all designed to work with this page. Try swapping them out on line 29 and see what happens. -->
-
-<!-- Take a look around and make your own copy to adapt for your own use. -->
-
-<!-- This is a comment -->
-<!-- Comments are not displayed in the browser -->
-<!-- They can be used to leave notes in the code -->
-
 <!DOCTYPE html>
-<html> 
-    <!-- HTML is heirarchial: tags like this define elements on the page. 
-    Each tag does something different. For example:
-        - The <html> tag defines the whole document.
-        - The <h1> tag defines a large heading
-        - The <p> tag defines a paragraph
-        - Tags appear as an opening <div> and closing </div> pair
-    -->
-
-<head>    
-    <!-- The head tag links to resources our page needs and defines information about it. Tags in the <head> aren't displayed on the page. -->
-
-    <!-- This is a link to a stylesheet which contains rules about how each element on the page should be defined-->
-    <!-- Try swapping example1.css to another, and take a look at example1.css to see if you understand it-->
-    <link rel="stylesheet" type="text/css" href="Example3.css">
-    <title>My Portfolio</title> <!-- The title displayed in the browser tab, not on the page itself -->
-
-    <!-- This is a link to the vega-lite which we're using to make graphs -->
-    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-
-    <style>
-        #chartGrid {
-            display: flex;
-        }
-        
-    </style>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="Example3.css">
+  <title>Virgie Yuliana</title>
 </head>
 
-<body> 
-<!-- The body tag contains the elements that visitors to our page will see. -->
-    <h1 class="big" style="margin-bottom: 0px;"> <!-- We have added a class to the header called "big" which we can use to style it in the CSS -->
-        <!-- This is a header, it is the largest text on the page -->
-        PP434 Projects Portfolio
-    </h1> 
-    <h3>
-        <strong>by Virgie Yuliana</strong>
-    </h3>
-    <h3 style="margin-top: 0px; color: darkslategray">
-        <!-- we're setting the margin to 0px so the header and authour name are close together -->
-        <a href="https://www.linkedin.com/in/eunikevirgiee">LinkedIn</a> | <a
-            href="https://github.com/eunikevirgie">GitHub</a>
-    </h3>
-    <h4> <!-- We have added a class to the header called "small" which we can use to style it in the CSS -->
-        Welcome to my PP434: Automated Data Visualization for Public Policy challenge website! 
-        Here, I post weekly coding exercises to practice turning data into clear and compelling visuals 
-    </h4>
+<body class="hero">
 
-    <!-- We're organising the page into sections, with each section containing a chart, title and a description -->
-    <section>
-        <div class="chart-description">
-            <h2>CC1 - Hosting. Display charts in your own site.</h2>
-                <h3> 
-                    <strong>Task:</strong> Set up a GitHub account and live page using GitHub pages.<br>
-                    Add two charts using the vegaEmbed function.<br>
-            </h3>
-        </div>
-        <figure id="Location1A" style="display: flex; justify-content: center;"></figure> <!-- you do NOT want a "#" here, just put the "#" below on the vegaEmbed  -->
-        <figure id="Location1B" style="display: flex; justify-content: center;"></figure> <!-- you do NOT want a "#" here, just put the "#" below on the vegaEmbed  -->
-            <p>
-                Source: <a href="https://www.economicsobservatory.com/a-year-in-the-uk-labour-market-whats-happened-over-the-coronavirus-pandemic">Economics Observatory</a>
-            </p>
-            <hr style="margin: 50px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">
-    </section>
+  <div class="hero-content">
+    <img src="assets/data-icon.svg"
+         alt="Data visualization icon"
+         class="hero-icon">    
+    <h1 class="hero-title">Virgie Yuliana</h1>
 
-    <section>
-        <div class="chart-description">
-            <h2>CC2 - Building. Create your own visualisations.</h2>
-                <h3> 
-                    <strong>Task:</strong> Build two seperate charts using the "create" tool from Economics Observatory Data Hub.<br>
-                    Embed the two charts in your page using the VegaEmbed function.<br>
-                    <strong> Go to <a href="https://www.economicsobservatory.com/create">Create Tool</a> </strong>
-            </h3>
-        </div>
-        <figure id="Location2A" style="display: flex; justify-content: center;"></figure> 
-        <figure id="Location2B" style="display: flex; justify-content: center;"></figure> 
-            <p>
-                Code: <a href="https://github.com/eunikevirgie/eunikevirgie.github.io/blob/main/CC2_chart1.json">Graph 1</a> | 
-                <a href="https://github.com/eunikevirgie/eunikevirgie.github.io/blob/main/CC2_chart2.json">Graph 2</a>
-            </p>
-            <hr style="margin: 50px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">
-    </section>
+    <p class="hero-links">
+      <a href="https://www.linkedin.com/in/eunikevirgiee">LinkedIn</a> ·
+      <a href="https://github.com/eunikevirgie">GitHub</a>
+    </p>
 
-   <section>
-        <div class="chart-description">
-            <h2>CC3 - Debate. Use a visualisation in policy commentary.</h2>
-                <h3> 
-                    <strong>Task:</strong> 1. Set out a policy topic.<br>
-                    2. Produce two charts that support or refute or related to a topic of policy debate.<br>
-                    3. Comment on what you find from the charts.<br>
-            </h3>
-        </div>
-            <p style= "text-align: center;">
-                <strong>UK Inflation and Economic Growth: Evidence from Three Decades</strong> <br>
-                The Bank of England should maintain its 2% inflation target to avoid the economic contractions that historically accompany high inflation episodes.<br>
-            </p>
-        <figure id="Location3A" style="display: flex; justify-content: center;"></figure>
-            <p style= "text-align: center;">
-                Data confirms inflation spikes in 1990-91, 2008-09, and 2020-22 coincided with sharp GDP contractions—whether before, during, or after—validating low inflation targets.<br>
-            </p>
-        <figure id="Location3B" style="display: flex; justify-content: center;"></figure> 
-            <p>
-                Data Sourve: <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/l55o/mm23">Inflation YoY (%)</a> | 
-                <a href="https://www.ons.gov.uk/economy/grossdomesticproductgdp/timeseries/ihyp/pn2">GDP YoY (%)</a> (Office for National Statistics)<br>
-                Code: <a href="https://github.com/eunikevirgie/eunikevirgie.github.io/blob/main/CC3_chart1.json">Graph 1</a> | 
-                <a href="https://github.com/eunikevirgie/eunikevirgie.github.io/blob/main/CC3_chart2.json">Graph 2</a>
-            </p>
-            <hr style="margin: 50px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">
-    </section>
+    <p class="hero-text">
+      This website documents my learning journey in
+      <strong>data visualization for public policy</strong>.
+      The portfolio showcases weekly coding challenges where I experiment
+      with turning raw data into clear, compelling visuals, while the projects
+      section highlights more structured work that brings together data,
+      policy questions, and storytelling.
+    </p>
 
-    <section>
-        <div class="chart-description">
-            <h2>CC4 - Replicate. Re-create, then improve, someone else's chart.</h2>
-            <h3> 
-                <strong>Task:</strong> 1. Find a chart create an image file of their chart.<br>
-                2. Replicate their chart in Vega-Lite.<br>
-                3. Improve their chart. Change the elements of the chart specification to make it better<br>
-            </h3><br>
-            <h3>
-                <strong>Chart Replication: Gender Distribution by Ethnicity</strong><br>
-                Source: <a href="https://www.economist.com/britain/2016/08/13/the-metamorphosis">The Economist</a>                     
-            </h3>
-            <style>
-                .side-by-side {
-                    display: flex;
-                    justify-content: space-around;
-                    align-items: flex-start;
-                    gap: 20px;
-                    flex-wrap: nowrap;
-                }
-            .column {
-                text-align: center;
-            }
+    <div class="hero-buttons">
+      <a href="portfolio.html" class="hero-btn primary">Portfolio</a>
+      <a href="projects.html" class="hero-btn secondary">Projects</a>
+    </div>
+  </div>
 
-            .column:first-child {
-                flex: 0 0 25%;  /* Kotak pertama (Version 1) lebih kecil */
-            }
-
-            .column:nth-child(2) {
-                flex: 0 0 45%;  /* Kotak kedua (Version 2) lebih gede */
-            }
-            </style>
-                <div class="side-by-side">
-                    <div class="column">
-                        <p style= "text-align: center;"> <strong>Version 1: Original Chart</strong></p>
-                        <img src="CC4_image1.jpg" alt="Original Chart" style="max-width: 300px; height: auto; border: 1px solid #ddd; padding: 10px;"><br>
-                    </div>
-                    <div class="column">
-                        <p style= "text-align: center;"> <strong>Version 2: Replicated Chart</strong></p>
-                        <div id="Location4A" style="display: flex; justify-content: center;"></div><br>
-                    </div>
-                </div>
-            <p style= "text-align: center;"> <strong>Version 3: Improved Chart</strong><br>
-                This improved version starts the axis at zero with consistent scaling, making the dramatic difference visible: Jeremy Corbyn's engagement was more than 7 times higher than the Labour Party's. A single color scheme replaces the original's unexplained multiple colors, which added confusion rather than clarity.
-            </p>
-            <div id="Location4B" style="display: flex; justify-content: center;"></div><br>
-            <p>
-                Code: <a href="https://github.com/eunikevirgie/eunikevirgie.github.io/blob/main/CC4_chart1.json">Version 2</a> | 
-                <a href="https://github.com/eunikevirgie/eunikevirgie.github.io/blob/main/CC4_chart2.json">Version 3</a>
-            </p>
-        </div>
-        <hr style="margin: 50px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">
-    </section>
-
-    <section>
-        <div class="chart-description">
-            <h2>CC5 - Accessing Data. Scraper and API.</h2>
-                <h3> 
-                    <strong>API Task:</strong> 1. Add a chart to your site that uses a live link to an API<br>
-                    2. Below your chart, add a functional description of the API.<br>
-                    <br>
-                    <div id="Location5A" style="display: flex; justify-content: center;"></div>
-                    <p style="text-align: justify;">
-                        <strong>API Functional Description:</strong> The World Bank API uses a base URL of "http://api.worldbank.org/v2/", followed by country/region codes, indicator code, and query parameters. For this chart, I used <strong>seven regional codes</strong> (EAS, ECS, LCN, MEA, NAC, SAS, SSF) representing major world regions, combined with indicator code <strong>SP.DYN.IMRT.IN</strong> for infant mortality rate per 1,000 live births.
-                        Three query parameters customize the data: (1) format=json returns JSON format, (2) per_page=500 retrieves sufficient records, and (3) date=1990:2050 specifies the year range while ensuring future updates are captured automatically.<br>
-                        <br><strong>The complete URL used:</strong><br>
-                        <a style= "text-align: center;" href="http://api.worldbank.org/v2/country/EAS;ECS;LCN;MEA;NAC;SAS;SSF/indicator/SP.DYN.IMRT.IN?format=json&per_page=500&date=1990:2050"> <strong>http://api.worldbank.org/v2/country/EAS;ECS;LCN;MEA;NAC;SAS;SSF/indicator/SP.DYN.IMRT.IN?format=json&per_page=500&date=1990:2050</strong></a>
-                        (This live API connection automatically updates when the World Bank publishes new data)<br>
-                        <br>
-                        Code: <a href="https://github.com/eunikevirgie/eunikevirgie.github.io/blob/main/CC5_chart1.json">CC5 API Task</a>
-                    </p>
-                    <hr style="margin: 40px 0; border: none; border-top: 3px dashed #999;">
-                    <strong>Scraper Task:</strong> 1. Using a Google Colab phyton notebook, scrape a website.<br>
-                    2. Clean and normalise the data and export into TIDY format.<br>
-                    3. Create a chart using the cleaned data and embed it in your site using Vega.<br>
-                    4. Comment (not more than 25 words) on what you did.<br>
-                    <br>
-                    <div id="Location5B" style="display: flex; justify-content: center;"></div>
-                    <p style="text-align: justify;">
-                        For this chart, I scraped Premier League table from Wikipedia, cleaned data in Colab, exported to CSV on GitHub, visualized attack-defense balance using Vega-Lite diverging bars.
-                        <a href="https://colab.research.google.com/drive/1udGenxb0187npGsH4J0ym4UrBKytr4T0#scrollTo=AldkpKoLeYTF"><strong>View Google Colab Notebook</strong></a><br>
-                        <br>
-                        Code: <a href="https://github.com/eunikevirgie/eunikevirgie.github.io/blob/main/CC5_chart2.json">CC5 Scraper Task</a>
-                    </p>
-            </h3>
-        </div>
-        <hr style="margin: 50px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">
-    </section>
-
-    <section>
-        <div class="chart-description">
-            <h2>CC6 - Loops. Build a dashboard.</h2>
-                <h3> 
-                    <strong>Task:</strong> 1. Use a loop to batch download six different series as JSON files.<br>
-                    2. Save these to your GitHub account and use these (as "raw" files) to supply the data to six (or more) charts on a theme of your choice.<br>
-                    3. As above, use a loop in your Javascript in order to embed the six charts.<br>
-                    <br>
-                <strong>Southeast Asia Employment Dashboard (2000-2024)</strong><br>
-                Data: <a href="https://data.worldbank.org/indicator/SL.EMP.TOTL.SP.ZS">World Bank | </a>
-                Analysis: <a href="https://colab.research.google.com/drive/1CAdx9RYzMLrPmAyY77BTrItfQE1OSJgo?usp=sharing">Google Colab Notebook | </a>
-                Code: <a href="https://github.com/eunikevirgie/eunikevirgie.github.io/blob/main/CC6_chartloops.js">Loop Code</a>               
-            </h3>
-            <div id="employment-dashboard" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px;"></div>
-            <script src="CC6_chartloops.js"></script>
-        </div>
-        <hr style="margin: 50px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">
-    </section>
-
-    <section>
-        <div class="chart-description">
-            <h2>CC7 - Maps. Base maps and choropleths.</h2>
-                <h3> 
-                    <strong>Task:</strong> Produce two maps and embed them in your portfolio page.<br>
-                    One map should be of Scotland, and the other should be of Wales.<br>
-                    Integrate maps with data, one should be a coordinate map, the other a choropleth.<br>
-                    <br>
-                <strong>Coordinate Map</strong><br>                    
-                Data: <a href="https://www.ons.gov.uk/explore-local-statistics/indicators/population-density">Office for National Statistics (ONS) | </a>
-                Code: <a href="https://github.com/eunikevirgie/eunikevirgie.github.io/blob/main/CC7_chart2.json">Coordinate Map</a><br>
-                <figure id="Location7B" style="display: flex; justify-content: center;"></figure>                
-                <hr style="margin: 40px 0; border: none; border-top: 3px dashed #999;">
-                <strong>Choropleth Map</strong><br>
-                Data: <a href="https://www.ons.gov.uk/explore-local-statistics/indicators/gross-disposable-household-income-per-head#get-the-data">Office for National Statistics (ONS) | </a>
-                Code: <a href="https://github.com/eunikevirgie/eunikevirgie.github.io/blob/main/CC7_chart1.json">Choropleth Map</a><br>  
-                <figure id="Location7A" style="display: flex; justify-content: center;"></figure>                
-            </h3>
-        </div>
-        <hr style="margin: 50px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">
-    </section>
-
-    <section>
-        <div class="chart-description">
-            <h2>CC8 - Big Data. Extracting a story from millions of prices.</h2>
-                <h3> 
-                    <strong>Task:</strong> 1. Produce two charts using UK prices datasets.<br>
-                    2. Explain, in no more than 50 words, what you have done.<br>
-            </h3>
-        </div>
-        <hr style="margin: 50px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">
-    </section>
-
-    <section>
-        <div class="chart-description">
-            <h2>CC9 - Two Interactive Charts</h2>
-                <h3> 
-                    <strong>Task:</strong> Produce two charts that include interactivity.<br>
-            </h3>
-        </div>
-        <hr style="margin: 50px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">
-    </section>
-
-    <section>
-        <div class="chart-description">
-            <h2>CC10 - Advanced Analysis and Machine Learning</h2>
-                <h3> 
-                    <strong>Task:</strong>1. Produce a chart that uses more advanced analytics that standard line, bar or scatter charts.<br>
-                    2. Conduct an applied data analysis using any of the machine learning techniques taught.<br>
-            </h3>
-        </div>
-        <hr style="margin: 50px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">
-    </section>    
-
-    <!-- Do you want to add more sections? -->
-        <!-- Try copying pasting the section above -->
-        <!-- You'll need to change the id of the figure "<figure id="Location3"... -->
-        <!-- ... and add a new variable for the graph spec in the script at the bottom of the page -->
-
-
-    <!-- This is a script, it's a way to run JavaScript code on the page -->
-    <script>
-        // This is a comment in JavaScript - it's a different language to HTML and CSS
-
-        let figure_1A_spec = "https://raw.githubusercontent.com/EconomicsObservatory/ECOvisualisations/refs/heads/main/articles/2021-04-14-a-year-in-the-uk-labour-market-whats-happened-over-the-coronavirus-pandemic/visualisation/fig1a_unemployment.json"; // We're storing the URL of the graph we want to display in a variable
-        let figure_1B_spec = "https://raw.githubusercontent.com/EconomicsObservatory/ECOvisualisations/refs/heads/main/articles/2021-04-14-a-year-in-the-uk-labour-market-whats-happened-over-the-coronavirus-pandemic/visualisation/fig3_weekly_wage_levels.json"
-        let figure_2A_spec = "CC2_chart1.json";
-        let figure_2B_spec = "CC2_chart2.json";
-        let figure_3A_spec = "CC3_chart1.json";
-        let figure_3B_spec = "CC3_chart2.json";
-        let figure_4A_spec = "CC4_chart1.json";
-        let figure_4B_spec = "CC4_chart2.json";
-        let figure_5A_spec = "CC5_chart1.json";
-        let figure_5B_spec = "CC5_chart2.json";
-        let figure_7A_spec = "CC7_chart1.json";
-        let figure_7B_spec = "CC7_chart2.json";
-        
-        vegaEmbed('#Location1A', figure_1A_spec) // We're using the vegaEmbed function to put a graph in the element with id figure_1A
-        vegaEmbed('#Location1B', figure_1B_spec) 
-        vegaEmbed('#Location2A', figure_2A_spec)
-        vegaEmbed('#Location2B', figure_2B_spec)
-        vegaEmbed('#Location3A', figure_3A_spec)
-        vegaEmbed('#Location3B', figure_3B_spec)
-        vegaEmbed('#Location4A', figure_4A_spec)
-        vegaEmbed('#Location4B', figure_4B_spec)
-        vegaEmbed('#Location5A', figure_5A_spec)
-        vegaEmbed('#Location5B', figure_5B_spec)
-        vegaEmbed('#Location7A', figure_7A_spec)
-        vegaEmbed('#Location7B', figure_7B_spec)        
-
-        // Do you want to add more graphs?
-        // try defining a new variable for figure_3_spec, adding VegaEmbed for Location3, and adding a new section in the HTML
-        // e.g. 
-        // let figure_3_spec = ...
-        // vegaEmbed('#Location3', figure_3_spec)
-
-
-    </script>
- 
 </body>
-    
 </html>
