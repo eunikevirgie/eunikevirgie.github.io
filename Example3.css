@@ -121,7 +121,7 @@ img {
       rgba(255,255,255,0.88),
       rgba(255,255,255,0.88)
     ),
-    url("assets/bg-wave.svg");
+    url("bg-wave.svg");
   background-repeat: no-repeat;
   background-position: top;
   background-size: cover;
