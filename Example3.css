@@ -30,14 +30,17 @@ h1, h2, h3, h4, h5, h6 {
 /* We want the headings to be a little bigger than the paragraph text */
 .big { /* This is the class we created in the HTML file, you can use it to style any element */
   font-size: 2.5em;
+  line-height: 1.2;
 }
 
 h2 {
   font-size: 1.75em;
+  color: darkslategray;
 }
 
 .small {
   font-size: 1.25em;
+  line-height: 1.1;
 }
 
 h3 {
@@ -80,4 +83,117 @@ a:hover {
 img {
   max-width: 100%;
   height: auto;
+}
+
+/* Side-by-side layout for chart comparison */
+.side-by-side {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    margin: 20px 0;
+}
+
+.column {
+    flex: 1;
+    border: 1px solid #ddd;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 5px;
+}
+
+.column img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+
+/* Chart description styling */
+.chart-description {
+    margin: 20px 0;
+}
+
+/* ---------- HERO HOMEPAGE ---------- */
+.hero {
+  min-height: 100vh;
+  background:
+    linear-gradient(
+      rgba(255,255,255,0.88),
+      rgba(255,255,255,0.88)
+    ),
+    url("assets/bg-wave.svg");
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 720px;
+  padding: 32px 24px;
+}
+
+.hero-title {
+  font-size: 3.2rem;
+  margin-bottom: 0 0 8px 0;
+  color: #2b2b2b;
+}
+
+.hero-links a {
+  color: #1f7a63;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.hero-links {
+  margin: 0 0 18px 0;
+}
+
+.hero-text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #555;
+  margin: 0 0 30px 0;
+}
+
+/* ---------- BUTTONS ---------- */
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.hero-btn {
+  padding: 16px 34px;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.hero-btn.primary {
+  background: #2f6f5e;
+  color: white;
+}
+
+.hero-btn.secondary {
+  background: white;
+  color: #2f6f5e;
+  border: 2px solid #2f6f5e;
+}
+
+.hero-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.hero-icon {
+  width: 80px;
+  margin-bottom: 6px;
+  opacity: 0.9;
 }
