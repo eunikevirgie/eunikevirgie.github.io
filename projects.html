@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html> 
+<head>   
+
+    <link rel="stylesheet" type="text/css" href="Example3.css">
+    <title>My Portfolio</title> <!-- The title displayed in the browser tab, not on the page itself -->
+
+    <!-- This is a link to the vega-lite which we're using to make graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+    <style>
+        #chartGrid {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body> 
+<!-- The body tag contains the elements that visitors to our page will see. -->
+    <h1 class="big" style="margin-bottom: 16px;"> <!-- We have added a class to the header called "big" which we can use to style it in the CSS -->
+        <!-- This is a header, it is the largest text on the page -->
+        “New Normal”: Singapore’s Tourism Recovery After COVID-19
+    </h1> 
+    <h3>
+        <strong>by Virgie Yuliana</strong>
+    </h3>
+    <h3 style="margin-top: 0px; margin-bottom: 0px; color: darkslategray">
+        <!-- we're setting the margin to 0px so the header and authour name are close together -->
+        <a href="index.html"><strong>HOME</strong></a> | <a
+            href="https://www.linkedin.com/in/eunikevirgiee">LinkedIn</a> | <a
+            href="https://github.com/eunikevirgie">GitHub</a>
+    </h3>
+
+    <h2 class="small" style= "text-align: center; margin-top: 16px; margin-bottom: 0px;">
+        <strong>Aims</strong><br>
+    </h2>
+    <p style= "text-align: center; margin-top: 6px;">
+        This project examines how Singapore’s tourism sector recovered from the COVID-19 shock between 2019 and 2024, and whether the structure of visitor markets has returned to its pre-pandemic pattern or shifted to a new normal.
+    </p>
+
+    <h2 class="small" style= "text-align: center; margin-top: 16px; margin-bottom: 0px;">
+        <strong>Project Overview</strong><br>
+    </h2>
+    <p style= "text-align: center; margin-top: 6px;">
+        International travel to Singapore collapsed in 2020 following global border closures. While visitor numbers have since rebounded, recovery has varied substantially across source markets. 
+        Using monthly arrival data, this project visualizes the depth of the pandemic shock, compares recovery paths across visitor markets, and highlights changes in tourism composition during the post-COVID period. <br><br>
+        Interactive charts allow users to explore recovery dynamics over time and across markets, providing insights into resilience, dependence, and structural change in Singapore’s tourism economy.
+    </p>
+
+    <h2 class="small" style= "text-align: center; margin-top: 16px; margin-bottom: 0px;">
+        <strong>Data and Approach</strong><br>
+    </h2>
+    <p style= "text-align: center; margin-top: 6px;">
+        The analysis uses monthly international visitor arrival data from Singapore’s Department of Statistics <a href="https://www.singstat.gov.sg">(Singapore DOS)</a>.
+        Data are cleaned and processed using Python, and interactive visualisations are built with Vega-Lite. All processing steps are automated to allow straightforward updates as new data become available.
+    </p>
+    
+    <hr style="margin: 20px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">    
