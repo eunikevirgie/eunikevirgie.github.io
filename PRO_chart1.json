@@ -1,0 +1,83 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "The Recovery Path: Singapore Visitor Arrivals by Market Group (2019–2025)",
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/eunikevirgie/eunikevirgie.github.io/main/Project_data_processed_figure2.csv",
+    "format": { "type": "csv" }
+  },
+  "params": [
+    { "name": "show_total", "value": true, "bind": { "input": "checkbox", "name": "Total" } },
+    { "name": "show_seasia", "value": true, "bind": { "input": "checkbox", "name": "Southeast Asia" } },
+    { "name": "show_gchina", "value": true, "bind": { "input": "checkbox", "name": "Greater China" } },
+    { "name": "show_europe", "value": false, "bind": { "input": "checkbox", "name": "Europe" } },
+    { "name": "show_nasia", "value": false, "bind": { "input": "checkbox", "name": "North Asia" } },
+    { "name": "show_oceania", "value": false, "bind": { "input": "checkbox", "name": "Oceania" } },
+    { "name": "show_americas", "value": false, "bind": { "input": "checkbox", "name": "Americas" } },
+    { "name": "show_sasia", "value": false, "bind": { "input": "checkbox", "name": "South Asia" } },
+    { "name": "show_wasia", "value": false, "bind": { "input": "checkbox", "name": "West Asia" } },
+    { "name": "show_africa", "value": false, "bind": { "input": "checkbox", "name": "Africa" } },
+    { "name": "show_other", "value": false, "bind": { "input": "checkbox", "name": "Other" } },
+
+    {
+      "name": "metric",
+      "value": "Indexed (2019=100)",
+      "bind": {
+        "input": "radio",
+        "name": "Metric: ",
+        "options": ["Indexed (2019=100)", "Raw arrivals"]
+      }
+    },
+
+    {
+      "name": "zoom",
+      "select": { "type": "interval", "encodings": ["x"] }
+    }
+  ],
+  "transform": [
+    { "filter": "toDate(datum.date) >= toDate('2019-01-01') && toDate(datum.date) <= toDate('2025-12-31')" },
+    { "filter": { "param": "zoom" } },
+    {
+      "calculate": "metric === 'Raw arrivals' ? datum.arrivals : datum.index_2019",
+      "as": "yval"
+    },
+    {
+      "filter": "((datum.market_group === 'Total' && show_total) || (datum.market_group === 'Southeast Asia' && show_seasia) || (datum.market_group === 'Greater China' && show_gchina) || (datum.market_group === 'Europe' && show_europe) || (datum.market_group === 'North Asia' && show_nasia) || (datum.market_group === 'Oceania' && show_oceania) || (datum.market_group === 'Americas' && show_americas) || (datum.market_group === 'South Asia' && show_sasia) || (datum.market_group === 'West Asia' && show_wasia) || (datum.market_group === 'Africa' && show_africa) || (datum.market_group === 'Other' && show_other))"
+    }
+  ],
+  "width": 650,
+  "height": 420,
+  "padding": { "left": 90 },
+  "mark": { "type": "line" },
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "title": "",
+      "axis": {
+        "format": "%b-%y",
+        "tickCount": { "interval": "month", "step": 6 },
+        "labelAngle": 0
+      },
+    "scale": {
+      "domain": ["2019-01-01", "2025-12-31"]
+    }
+  },
+    "y": {
+      "field": "yval",
+      "type": "quantitative",
+      "title": null,
+      "axis": {
+        "format": "~s",
+        "labelFlush": true
+      }
+    },
+    "color": { "field": "market_group", "type": "nominal", "title": "Market group" },
+    "tooltip": [
+      { "field": "date", "type": "temporal", "title": "Month" },
+      { "field": "market_group", "type": "nominal", "title": "Market group" },
+      { "field": "arrivals", "type": "quantitative", "title": "Arrivals", "format": "," },
+      { "field": "index_2019", "type": "quantitative", "title": "Index (2019=100)", "format": ".1f" }
+    ]
+  }
+}
