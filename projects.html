@@ -32,29 +32,39 @@
             href="https://www.linkedin.com/in/eunikevirgiee">LinkedIn</a> | <a
             href="https://github.com/eunikevirgie">GitHub</a>
     </h3>
+    <br>
 
-    <h2 class="small" style= "text-align: center; margin-top: 16px; margin-bottom: 0px;">
+    <h2 style= "text-align: justify; margin-top: 16px; margin-bottom: 0px;">
         <strong>Aims</strong><br>
     </h2>
-    <p style= "text-align: center; margin-top: 6px;">
-        This project examines how Singapore’s tourism sector recovered from the COVID-19 shock between 2019 and 2024, and whether the structure of visitor markets has returned to its pre-pandemic pattern or shifted to a new normal.
-    </p>
-
-    <h2 class="small" style= "text-align: center; margin-top: 16px; margin-bottom: 0px;">
-        <strong>Project Overview</strong><br>
-    </h2>
-    <p style= "text-align: center; margin-top: 6px;">
-        International travel to Singapore collapsed in 2020 following global border closures. While visitor numbers have since rebounded, recovery has varied substantially across source markets. 
-        Using monthly arrival data, this project visualizes the depth of the pandemic shock, compares recovery paths across visitor markets, and highlights changes in tourism composition during the post-COVID period. <br><br>
-        Interactive charts allow users to explore recovery dynamics over time and across markets, providing insights into resilience, dependence, and structural change in Singapore’s tourism economy.
-    </p>
-
-    <h2 class="small" style= "text-align: center; margin-top: 16px; margin-bottom: 0px;">
-        <strong>Data and Approach</strong><br>
-    </h2>
-    <p style= "text-align: center; margin-top: 6px;">
-        The analysis uses monthly international visitor arrival data from Singapore’s Department of Statistics <a href="https://www.singstat.gov.sg">(Singapore DOS)</a>.
-        Data are cleaned and processed using Python, and interactive visualisations are built with Vega-Lite. All processing steps are automated to allow straightforward updates as new data become available.
+    <p style= "text-align: justify; margin-top: 6px;">
+        This project examines how Singapore’s tourism sector recovered from the COVID-19 shock between 2019 and 2025, and whether the structure of visitor markets has returned to its pre-pandemic pattern or shifted to a new normal. 
+        Using seven interactive visualisations, the analysis tracks recovery dynamics over time, compares performance across source markets, and explores structural changes in Singapore’s tourism economy.
     </p>
     
     <hr style="margin: 20px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">    
+
+    <section>
+        <div class="chart-description">
+            <h2 style="text-align: justify;">The Overall Recovery Path</h2>
+                <h3 style="text-align: justify;">International visitor arrivals collapsed sharply in early 2020 and remained near zero through much of 2021. While arrivals rebounded after borders reopened in 2022, indexed comparisons show that total arrivals have not consistently returned to pre-pandemic levels, indicating an incomplete and volatile recovery.</h3>
+        </div>
+        <div class="chart-container">
+            <figure id="LocationPRO1" style="display: flex; justify-content: center;"></figure>
+        </div>
+        <div class="data-box">
+            <strong>Data:</strong>
+            Monthly international visitor arrivals by place of residence are retrieved from Singapore Department of Statistics <a href="https://data.gov.sg/datasets/d_d1c33009b674dcf70b8e8c790b793f28/view">(SingStat)</a>.
+            I clean and reshape the data in Python (Google Colab), group markets into regions, and construct a 2019=100 index before exporting a tidy CSV for Vega-Lite.
+            <a class="data-link" href="https://colab.research.google.com/drive/1w-TZ3KzLVPgN1NcAPFTWcYuWtzgBOdsE#scrollTo=mbOQ5g4Bcb1M" target="_blank" rel="noopener"><br>
+            View notebook </a>.
+        </div>
+    </section>
+
+    <hr style="margin: 20px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">    
+
+<script>
+    let figure_PRO1_spec = "PRO_chart1.json"
+
+    vegaEmbed('#LocationPRO1', figure_PRO1_spec)
+</script>
