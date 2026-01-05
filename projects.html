@@ -103,12 +103,35 @@
 
     <hr style="margin: 20px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">    
 
+    <section>
+        <div class="chart-description">
+            <h2 style="text-align:left;">Tourism Dependence vs Recovery Speed</h2>
+                <h3 style="text-align: justify;">Comparing pre-COVID market importance with post-pandemic recovery reveals no clear relationship between market size and recovery speed. Several large source markets, including Southeast Asia and Greater China, remain well below pre-pandemic levels, while smaller markets such as West Asia and Oceania have exceeded their 2019 benchmarks. 
+                    This pattern suggests that recovery outcomes are shaped more by structural and policy factors than by pre-existing market dependence alone.
+                </h3>
+        </div>
+        <div class="chart-container">
+            <figure id="LocationPRO4" class="vega-wrap"style="display: flex; justify-content: center;"></figure>
+        </div>
+        <div class="data-box">
+            <strong>Data:</strong>
+            This visualization combines market share in 2019 with the recovery index defined earlier. Market share is calculated as each market group’s proportion of total international visitor arrivals in 2019. These shares are then matched with market-level recovery indices to examine the relationship between pre-pandemic dependence and post-pandemic recovery.
+            <a class="data-link" href="https://colab.research.google.com/drive/11uLGIjlQuCp_GKZXGO90-WrDi8RE_vaq" target="_blank" rel="noopener"><br>
+            View notebook </a>.
+        </div>
+    </section>
+
+    <hr style="margin: 20px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">    
+
+
 <script>
     let figure_PRO1_spec = "PRO_chart1.json"
     let figure_PRO2_spec = "PRO_chart2.json"
     let figure_PRO3_spec = "PRO_chart3.json"
+    let figure_PRO4_spec = "PRO_chart4.json"
 
     vegaEmbed('#LocationPRO1', figure_PRO1_spec)
     vegaEmbed('#LocationPRO2', figure_PRO2_spec)
     vegaEmbed('#LocationPRO3', figure_PRO3_spec)
+    vegaEmbed('#LocationPRO4', figure_PRO4_spec)
 </script>
