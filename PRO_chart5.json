@@ -1,0 +1,78 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": {
+    "text": "Source Market Transformation",
+    "subtitle": "Market group shares of total arrivals: 2019 vs 2024–latest (100% stacked). Click the legend to highlight a market.",
+    "anchor": "start"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/eunikevirgie/eunikevirgie.github.io/refs/heads/main/Project_data_processed_figure2.csv",
+    "format": { "type": "csv" }
+  },
+  "transform": [
+    { "calculate": "toDate(datum.date)", "as": "date_parsed" },
+    {
+      "filter": "lower(datum.market_group) != 'total' && lower(datum.market_group) != 'others' && lower(datum.market_group) != 'other'"
+    },
+    {
+      "calculate": "year(datum.date_parsed) == 2019 ? '2019' : (year(datum.date_parsed) >= 2024 ? '2024–latest' : null)",
+      "as": "period"
+    },
+    { "filter": "datum.period != null" },
+
+    {
+      "aggregate": [{ "op": "sum", "field": "arrivals", "as": "arrivals_sum" }],
+      "groupby": ["period", "market_group"]
+    },
+    {
+      "joinaggregate": [{ "op": "sum", "field": "arrivals_sum", "as": "period_total" }],
+      "groupby": ["period"]
+    },
+    { "calculate": "datum.arrivals_sum / datum.period_total", "as": "share" }
+  ],
+  "params": [
+    {
+      "name": "pick_market",
+      "select": { "type": "point", "fields": ["market_group"] },
+      "bind": "legend"
+    }
+  ],
+  "width": "container",
+  "height": 360,
+  "mark": { "type": "bar" },
+  "encoding": {
+    "x": {
+      "field": "period",
+      "type": "nominal",
+      "title": null,
+      "sort": ["2019", "2024–latest"]
+    },
+    "y": {
+      "field": "share",
+      "type": "quantitative",
+      "title": "Share of total arrivals",
+      "axis": { "format": "%" },
+      "stack": "normalize"
+    },
+    "color": {
+      "field": "market_group",
+      "type": "nominal",
+      "title": "Market Group"
+    },
+    "opacity": {
+      "condition": { "param": "pick_market", "value": 1 },
+      "value": 0.25
+    },
+    "tooltip": [
+      { "field": "period", "type": "nominal", "title": "Period" },
+      { "field": "market_group", "type": "nominal", "title": "Market Group" },
+      { "field": "arrivals_sum", "type": "quantitative", "title": "Total arrivals", "format": "," },
+      { "field": "share", "type": "quantitative", "title": "Share", "format": ".1%" }
+    ]
+  },
+  "config": {
+    "axis": { "labelFontSize": 12, "titleFontSize": 12 },
+    "title": { "fontSize": 16, "subtitleFontSize": 12 },
+    "legend": { "labelFontSize": 12, "titleFontSize": 12 }
+  }
+}
