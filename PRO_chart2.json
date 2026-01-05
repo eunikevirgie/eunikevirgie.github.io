@@ -1,0 +1,105 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": {
+    "text": "The Geography of Recovery: Visitor Arrivals Index (2019=100)",
+    "subtitle": "Drag the slider to explore quarterly recovery patterns (grey = no SingStat country-level data)"
+  },
+
+  "params": [
+    {
+      "name": "q",
+      "value": 27,
+      "bind": { "input": "range", "min": 0, "max": 27, "step": 1, "name": "Quarter: " }
+    }
+  ],
+
+  "spacing": 0,
+  "vconcat": [
+    {
+      "width": 600,
+      "height": 400,
+      "projection": { "type": "equalEarth" },
+      "layer": [
+        {
+          "data": { "sphere": true },
+          "mark": { "type": "geoshape", "fill": "#f5f5f5" }
+        },
+
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson",
+            "format": { "type": "json", "property": "features" }
+          },
+          "mark": { "type": "geoshape", "fill": "#d9d9d9", "stroke": "white", "strokeWidth": 0.5 }
+        },
+
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/eunikevirgie/eunikevirgie.github.io/refs/heads/main/Project_data_processed_map2_slider.csv",
+            "format": { "type": "csv" }
+          },
+          "transform": [
+            { "filter": "datum.date_idx == q" },
+            {
+              "lookup": "iso3",
+              "from": {
+                "data": {
+                  "url": "https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson",
+                  "format": { "type": "json", "property": "features" }
+                },
+                "key": "properties.ISO3166-1-Alpha-3",
+                "fields": ["geometry", "properties.name"]
+              }
+            }
+          ],
+          "mark": { "type": "geoshape", "stroke": "white", "strokeWidth": 0.5 },
+          "encoding": {
+            "shape": { "field": "geometry", "type": "geojson" },
+            "color": {
+              "field": "index_2019",
+              "type": "quantitative",
+              "title": "Recovery index (2019=100)",
+              "scale": { "domain": [0, 140], "clamp": true },
+              "legend": {
+                "titleFontSize": 11,
+                "labelFontSize": 10,
+                "symbolSize": 120,
+                "gradientLength": 120,
+                "gradientThickness": 10
+            }
+            },
+            "tooltip": [
+              { "field": "country", "type": "nominal", "title": "Country (data)" },
+              { "field": "properties.name", "type": "nominal", "title": "Country (map)" },
+              { "field": "iso3", "type": "nominal", "title": "ISO3" },
+              { "field": "quarter_label", "type": "nominal", "title": "Quarter" },
+              { "field": "index_2019", "type": "quantitative", "format": ".1f", "title": "Index (2019=100)" },
+              { "field": "arrivals", "type": "quantitative", "format": ",", "title": "Arrivals" }
+            ]
+          }
+        }
+      ]
+    },
+
+    {
+      "width": 600,
+      "height": 2,
+      "data": {
+        "url": "https://raw.githubusercontent.com/eunikevirgie/eunikevirgie.github.io/refs/heads/main/Project_data_processed_map2_slider.csv",
+        "format": { "type": "csv" }
+      },
+      "transform": [
+        { "filter": "datum.date_idx == q" },
+        { "aggregate": [{ "op": "max", "field": "quarter_label", "as": "q_label" }] }
+      ],
+      "mark": { "type": "text", "fontSize": 18, "fontWeight": "bold" },
+      "encoding": { "text": { "field": "q_label" } }
+    }
+  ],
+
+  "config": {
+    "view": { "stroke": null },
+    "axis": { "labelFontSize": 12, "titleFontSize": 12 },
+    "legend": { "labelFontSize": 12, "titleFontSize": 12 }
+  }
+}
