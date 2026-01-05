@@ -1,0 +1,10 @@
+region,cluster,cluster_name,current_recovery_index,market_share_2019,current_avg_arrivals,volatility,time_to_50,growth_slope
+Africa,2,Diverse Performers,84.4,0.5,6399.409090909091,31.5,30,1.81
+Americas,2,Diverse Performers,96.8,5.0,77657.95454545454,28.8,27,1.55
+Europe,2,Diverse Performers,95.1,11.2,169095.54545454544,30.8,28,1.73
+Greater China,0,Slow Giant (China),86.6,23.9,329974.45454545453,38.8,38,2.4
+North Asia,2,Diverse Performers,78.8,8.0,100525.63636363637,29.1,33,1.63
+Oceania,2,Diverse Performers,106.4,6.9,117108.22727272728,32.4,26,1.79
+South Asia,1,High-Volume Laggards,86.4,9.0,123434.18181818182,23.0,12,1.19
+Southeast Asia,1,High-Volume Laggards,83.0,34.7,458450.7272727273,22.8,27,1.16
+West Asia,2,Diverse Performers,116.3,0.9,16369.454545454546,40.8,26,2.27
