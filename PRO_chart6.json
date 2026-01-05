@@ -2,7 +2,8 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Tourism Recovery Archetypes: Market Size vs. Performance",
-    "subtitle": "Bubble size represents volatility (monthly standard deviation in recovery index). K-means clustering reveals three distinct recovery patterns."
+    "subtitle": "Bubble size represents volatility (monthly standard deviation in recovery %, where 100 = 2019 level)." 
+    "subtitle": "K-means clustering reveals three distinct recovery patterns."
   },
   "width": 600,
   "height": 400,
