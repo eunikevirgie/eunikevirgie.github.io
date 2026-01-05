@@ -283,6 +283,20 @@
             <h2>CC9 - Two Interactive Charts</h2>
                 <h3> 
                     <strong>Task:</strong> Produce two charts that include interactivity.<br>
+                    <p style="text-align: justify;">
+                        I created two interactive visualisations analysing the recovery of international visitor arrivals to Singapore following the COVID-19 shock, using monthly arrivals data by place of residence from the Singapore Department of Statistics <a href="https://data.gov.sg/datasets/d_d1c33009b674dcf70b8e8c790b793f28/view"><strong>(SingStat)</strong></a>. 
+                        The data were cleaned and reshaped in Python, and arrivals were indexed to a 2019 baseline (2019=100) to allow comparisons across markets and over time.
+                        <a class="data-link" href="https://colab.research.google.com/drive/1w-TZ3KzLVPgN1NcAPFTWcYuWtzgBOdsE#scrollTo=mbOQ5g4Bcb1M" target="_blank" rel="noopener"><br><strong>View notebook</strong></a>.
+                        <br><br>
+                        The first chart is an <strong>interactive indexed line chart</strong> that allows users to toggle between market groups and metrics. It shows the sharp collapse in early 2020, followed by a gradual and volatile recovery after borders reopened in 2022. 
+                        The chart highlights substantial differences in recovery dynamics across regions, particularly the more delayed and volatile rebound from Greater China compared to Southeast Asia.
+                        <figure id="Location9A" style="display: flex; justify-content: center;"></figure>
+                    </p>
+                    <p style="text-align: justify;">
+                        The second chart is an <strong>interactive world choropleth map</strong> with a quarterly slider, enabling users to explore how recovery evolved geographically over time. The map reveals that recovery was highly uneven in the early reopening phase: by 2021Q4, Bangladesh, India, and Myanmar showed the earliest signs of recovery, while most other countries remained close to zero. 
+                        This spatial pattern underscores the role of asynchronous border policies and regional mobility in shaping Singapore’s tourism recovery.
+                        <figure id="Location9B" style="display: flex; justify-content: center;"></figure>
+                    </p>
             </h3>
         </div>
         <hr style="margin: 50px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">
@@ -321,6 +335,8 @@
         let figure_5B_spec = "CC5_chart2.json";
         let figure_7A_spec = "CC7_chart1.json";
         let figure_7B_spec = "CC7_chart2.json";
+        let figure_9A_spec = "PRO_chart1.json";
+        let figure_9B_spec = "PRO_chart2.json";
         
         vegaEmbed('#Location1A', figure_1A_spec) // We're using the vegaEmbed function to put a graph in the element with id figure_1A
         vegaEmbed('#Location1B', figure_1B_spec) 
@@ -334,6 +350,8 @@
         vegaEmbed('#Location5B', figure_5B_spec)
         vegaEmbed('#Location7A', figure_7A_spec)
         vegaEmbed('#Location7B', figure_7B_spec)        
+        vegaEmbed('#Location9A', figure_9A_spec)
+        vegaEmbed('#Location9B', figure_9B_spec)
 
         // Do you want to add more graphs?
         // try defining a new variable for figure_3_spec, adding VegaEmbed for Location3, and adding a new section in the HTML
