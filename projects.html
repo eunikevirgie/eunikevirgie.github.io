@@ -46,7 +46,7 @@
 
     <section>
         <div class="chart-description">
-            <h2 style="text-align: justify;">The Overall Recovery Path</h2>
+            <h2 style="text-align: justify;">1. The Overall Recovery Path</h2>
                 <h3 style="text-align: justify;">International visitor arrivals collapsed sharply in early 2020 and remained near zero through much of 2021. While arrivals rebounded after borders reopened in 2022, indexed comparisons show that total arrivals have not consistently returned to pre-pandemic levels, indicating an incomplete and volatile recovery.</h3>
         </div>
         <div class="chart-container">
@@ -63,8 +63,30 @@
 
     <hr style="margin: 20px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">    
 
+    <section>
+        <div class="chart-description">
+            <h2 style="text-align:left;">2. The Geography of Recovery: Uneven and Asynchronous Reopening</h2>
+                <h3 style="text-align: justify;">This map shows that Singapore’s tourism recovery was highly uneven across source countries, particularly during the early reopening phase. While aggregate arrivals remained extremely low through 2021, a small number of countries began to recover earlier than others. By 2021Q4, Bangladesh recorded the highest recovery index (31.6), followed by Myanmar (11.7) and India (10.7), while most other markets remained below an index value of 5.<br><br>
+                This map shows that Singapore’s tourism recovery was highly uneven across source countries, particularly during the early reopening phase. While aggregate arrivals remained extremely low through 2021, a small number of countries began to recover earlier than others. By 2021Q4, Bangladesh recorded the highest recovery index (31.6), followed by Myanmar (11.7) and India (10.7), while most other markets remained below an index value of 5.
+                </h3>
+        </div>
+        <div class="chart-container">
+            <figure id="LocationPRO2" class="vega-wrap"style="display: flex; justify-content: center;"></figure>
+        </div>
+        <div class="data-box">
+            <strong>Data:</strong>
+            This visualization builds on the same SingStat arrivals data and 2019=100 index construction described in Figure 1. The additional steps involve disaggregating arrivals to the country level, aggregating monthly data to quarters, and matching countries to ISO3 codes for spatial mapping. Countries without SingStat country-level data are displayed in grey to preserve global context. The map is implemented in Vega-Lite with a quarter slider that filters the data dynamically.
+            <a class="data-link" href="https://colab.research.google.com/drive/1GaV4z7zdYSPBOuCpjmP0P3veGhrlrYtT#scrollTo=HAR2TIZPNnmj" target="_blank" rel="noopener"><br>
+            View notebook </a>.
+        </div>
+    </section>
+
+    <hr style="margin: 20px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">    
+
 <script>
     let figure_PRO1_spec = "PRO_chart1.json"
+    let figure_PRO2_spec = "PRO_chart2.json"
 
     vegaEmbed('#LocationPRO1', figure_PRO1_spec)
+    vegaEmbed('#LocationPRO2', figure_PRO2_spec)
 </script>
