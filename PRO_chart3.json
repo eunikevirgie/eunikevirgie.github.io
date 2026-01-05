@@ -1,0 +1,68 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": {
+    "text": "Winners and Losers: Tourism Market Recovery Relative to 2019",
+    "subtitle": [
+      "Recovery Index (2019 = 100), based on average monthly arrivals (2024–latest).",
+      "Note: Residual “Others” category excluded due to negligible pre-COVID baseline."
+    ],
+    "anchor": "start"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/eunikevirgie/eunikevirgie.github.io/refs/heads/main/Project_data_processed_figure3.csv",
+    "format": { "type": "csv" }
+  },
+  "width": "container",
+  "height": { "step": 28 },
+  "layer": [
+    {
+      "mark": { "type": "rule", "strokeWidth": 1 },
+      "encoding": {
+        "x": {
+          "datum": 100,
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": { "type": "bar", "cornerRadiusEnd": 3 },
+      "encoding": {
+        "y": {
+          "field": "market_group",
+          "type": "nominal",
+          "sort": "-x",
+          "title": null
+        },
+        "x": {
+          "field": "recovery_index",
+          "type": "quantitative",
+          "title": "Recovery Index (2019 = 100)"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.recovery_index >= 100",
+            "value": "#2ca02c"
+          },
+          "value": "#d62728"
+        },
+        "tooltip": [
+          { "field": "market_group", "type": "nominal", "title": "Market Group" },
+          { "field": "recovery_index", "type": "quantitative", "title": "Recovery Index (2019=100)" },
+          { "field": "arrivals_2019_avg", "type": "quantitative", "title": "Avg monthly arrivals (2019)" },
+          { "field": "arrivals_post_avg", "type": "quantitative", "title": "Avg monthly arrivals (2024–latest)" },
+          { "field": "post_period", "type": "nominal", "title": "Post period" }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "title": {
+      "fontSize": 16,
+      "subtitleFontSize": 12
+    }
+  }
+}
