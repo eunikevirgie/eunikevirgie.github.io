@@ -308,7 +308,31 @@
                 <h3> 
                     <strong>Task:</strong>1. Produce a chart that uses more advanced analytics that standard line, bar or scatter charts.<br>
                     2. Conduct an applied data analysis using any of the machine learning techniques taught.<br>
-            </h3>
+                    <br>
+                <strong>Advanced Analysis Chart</strong><br>
+                Code: <a href="https://colab.research.google.com/drive/11uLGIjlQuCp_GKZXGO90-WrDi8RE_vaq?usp=sharing">Google Colab Notebook</a>
+                </h3>
+                <p style="text-align: justify;">
+                    <strong>Hypothesis:</strong> Singapore's tourism recovery exhibits systematic variation: markets with larger pre-pandemic shares demonstrate lower recovery performance, creating a strategic portfolio tension between volume and growth.<br>
+                    <strong>Finding:</strong> Southeast Asia and Greater China (60% of 2019 arrivals) underperform at 82-87% recovery, while smaller markets exceed 100%, confirming an inverse volume-performance relationship.
+                    <figure id="Location10A" style="display: flex; justify-content: center;"></figure>
+                </p>
+
+                <hr style="margin: 40px 0; border: none; border-top: 3px dashed #999;">
+
+                <h3>
+                <strong>Machine Learning Analysis</strong><br>
+                Code: <a href="https://colab.research.google.com/drive/1o9JvYAyIv4JfS6nBCY545MVdiAg6u0Bd">Google Colab Notebook</a>
+                </h3>
+                <p style="text-align: justify;">
+                    <strong>Hypothesis:</strong> Singapore's source markets cluster into distinct recovery archetypes based on performance, speed, volatility, and market size, requiring differentiated tourism policy approaches.<br><br>
+                    <strong>X Matrix Transformation:</strong><br>
+                    <strong>Input:</strong> 9 regions × 5 features (current recovery index, time to 50%, volatility, 2019 market share, growth slope)<br>
+                    <strong>Standardization:</strong> Z-score normalization using <code>sklearn.preprocessing.StandardScaler</code><br>
+                    <strong>Output:</strong> Standardized feature matrix for clustering analysis.<br><br>
+                    <strong>Finding:</strong> K-means identifies three segments: Slow Giant (China, 38-month recovery), High-Volume Laggards (SE/South Asia, 84.7% performance), Diverse Performers (six regions, 96.3% average). Silhouette score: 0.269.
+                    <figure id="Location10B" style="display: flex; justify-content: center;"></figure>
+                </p>               
         </div>
         <hr style="margin: 50px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">
     </section>    
@@ -337,7 +361,9 @@
         let figure_7B_spec = "CC7_chart2.json";
         let figure_9A_spec = "PRO_chart1.json";
         let figure_9B_spec = "PRO_chart2.json";
-        
+        let figure_10A_spec = "PRO_chart4.json";
+        let figure_10B_spec = "PRO_chart6.json";
+
         vegaEmbed('#Location1A', figure_1A_spec) // We're using the vegaEmbed function to put a graph in the element with id figure_1A
         vegaEmbed('#Location1B', figure_1B_spec) 
         vegaEmbed('#Location2A', figure_2A_spec)
@@ -352,6 +378,8 @@
         vegaEmbed('#Location7B', figure_7B_spec)        
         vegaEmbed('#Location9A', figure_9A_spec)
         vegaEmbed('#Location9B', figure_9B_spec)
+        vegaEmbed('#Location10A', figure_10A_spec)
+        vegaEmbed('#Location10B', figure_10B_spec)
 
         // Do you want to add more graphs?
         // try defining a new variable for figure_3_spec, adding VegaEmbed for Location3, and adding a new section in the HTML
