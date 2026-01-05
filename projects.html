@@ -38,28 +38,40 @@
         <strong>Aims</strong><br>
     </h2>
     <p style= "text-align: justify; margin-top: 6px;">
-        This project examines how Singapore’s tourism sector recovered from the COVID-19 shock between 2019 and 2025, and whether the structure of visitor markets has returned to its pre-pandemic pattern or shifted to a new normal. 
-        Using seven interactive visualisations, the analysis tracks recovery dynamics over time, compares performance across source markets, and explores structural changes in Singapore’s tourism economy.
+        This project examines how Singapore's tourism sector recovered from the COVID-19 shock between 2019 and 2025, and whether the structure of visitor markets has returned to its pre-pandemic pattern or shifted to a new normal. 
+        Using six interactive visualizations, the analysis tracks recovery dynamics over time, compares performance across source markets, and applies k-means clustering to identify distinct recovery archetypes. The project reveals structural transformation in Singapore's tourism composition, with strategic implications for policy and market prioritization.    
     </p>
+
+    <div class="data-box">
+        <strong>DATA:</strong>
+        Monthly international visitor arrivals by place of residence are retrieved from Singapore Department of Statistics <a href="https://data.gov.sg/datasets/d_d1c33009b674dcf70b8e8c790b793f28/view">(SingStat)</a>.
+        Data processing was conducted in Python using Google Colab across multiple notebooks—one for each visualization—with common transformations including country name standardization, regional aggregation, and construction of a 2019=100 recovery index. 
+        For geographic mapping, countries were matched to ISO3 codes. For clustering analysis, features including recovery performance, rebound speed, volatility, market share, and growth trajectory were standardized using z-score normalization and processed using scikit-learn's k-means algorithm. 
+        All processed datasets are exported as tidy CSVs for visualization in Vega-Lite.
+    </div>
+
+    <div class="data-box">
+        <strong>TOOLS:</strong>
+        Data processing used Python (pandas) in Google Colab with separate notebooks per visualization. Key challenges included standardizing country name variations and matching country names to ISO3 codes for geographic mapping. 
+        Machine learning analysis used scikit-learn's k-means clustering; optimal k=3 was determined by comparing silhouette scores across k=2 to k=6. All interactive visualizations were implemented in Vega-Lite and embedded directly into the project HTML.
+    </div>
     
     <hr style="margin: 20px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">    
 
     <section>
         <div class="chart-description">
             <h2 style="text-align: justify;">The Overall Recovery Path</h2>
-                <h3 style="text-align: justify;">International visitor arrivals to Singapore collapsed sharply in early 2020 and remained near zero through much of 2021. 
-                    Although arrivals rebounded following border reopening in 2022, indexed comparisons show that total visitor volumes have not consistently returned to pre-pandemic levels. The aggregate trend therefore points to an incomplete and uneven recovery, masking substantial variation beneath the headline totals.
+                <h3 style="text-align: justify;">
+                    International visitor arrivals to Singapore collapsed in early 2020 and remained near zero through much of 2021. Recovery began following border reopening in 2022, with indexed arrivals climbing from single digits back toward pre-pandemic benchmarks. 
+                    However, total visitor volumes have not consistently returned to 2019 levels even by 2025. The aggregate trend shows incomplete recovery with substantial volatility, but most importantly, this headline figure conceals significant variation across source markets pointing to structurally uneven recovery rather than uniform rebound.    
                 </h3>
         </div>
         <div class="chart-container">
             <figure id="LocationPRO1" style="display: flex; justify-content: center;"></figure>
         </div>
         <div class="data-box">
-            <strong>Data:</strong>
-            Monthly international visitor arrivals by place of residence are retrieved from the Singapore Department of Statistics <a href="https://data.gov.sg/datasets/d_d1c33009b674dcf70b8e8c790b793f28/view">(SingStat)</a>.
-            The data are cleaned and reshaped in Python using Google Colab, with individual markets grouped into regional categories. A recovery index (2019 = 100) is constructed and exported as a tidy CSV for visualization in Vega-Lite.
-            <a class="data-link" href="https://colab.research.google.com/drive/1w-TZ3KzLVPgN1NcAPFTWcYuWtzgBOdsE#scrollTo=mbOQ5g4Bcb1M" target="_blank" rel="noopener"><br>
-            View notebook </a>.
+            <a class="data-link" href="https://colab.research.google.com/drive/1w-TZ3KzLVPgN1NcAPFTWcYuWtzgBOdsE#scrollTo=mbOQ5g4Bcb1M" target="_blank" rel="noopener">
+            View notebook</a>.
         </div>
     </section>
 
@@ -67,19 +79,18 @@
 
     <section>
         <div class="chart-description">
-            <h2 style="text-align:left;">The Geography of Recovery: <br>Uneven and Asynchronous Reopening</h2>
-                <h3 style="text-align: justify;">Disaggregating the aggregate recovery reveals substantial geographic divergence across source countries. During the early reopening phase, only a small set of markets recorded meaningful recovery. By 2021Q4, Bangladesh showed the highest recovery index (31.6), followed by Myanmar (11.7) and India (10.7), while most countries remained below an index value of 5.<br><br>
-                This uneven pattern suggests that recovery was driven less by global tourism conditions and more by asynchronous border reopening and region-specific travel policies. Countries that reopened earlier or maintained more flexible outbound travel arrangements resumed limited travel to Singapore ahead of others. Although recovery broadened across regions during 2022–2023, the map indicates that convergence toward pre-pandemic levels remained incomplete, with persistent disparities across markets.
+            <h2 style="text-align:left;">The Geography of Recovery: Uneven and Asynchronous Reopening</h2>
+                <h3 style="text-align: justify;">
+                    Disaggregating by source country reveals asynchronous patterns. During early reopening in 2021Q4, only Bangladesh (31.6), Myanmar (11.7), and India (10.7) recorded meaningful recovery while most remained below index value 5. 
+                    This suggests recovery was driven by asynchronous border policies rather than global tourism conditions. Even by 2024-2025, convergence remained incomplete, with persistent disparities indicating structural disruption.
                 </h3>
         </div>
         <div class="chart-container">
             <figure id="LocationPRO2" class="vega-wrap"style="display: flex; justify-content: center;"></figure>
         </div>
         <div class="data-box">
-            <strong>Data:</strong>
-            This visualization builds on the same SingStat arrivals data and 2019 = 100 index constructed in Figure 1. Additional steps include disaggregating arrivals to the country level, aggregating monthly data to quarterly frequency, and matching countries to ISO3 codes for spatial mapping. Countries without country-level SingStat data are displayed in grey to preserve global context. The map is implemented in Vega-Lite with an interactive quarter slider.
-            <a class="data-link" href="https://colab.research.google.com/drive/1GaV4z7zdYSPBOuCpjmP0P3veGhrlrYtT#scrollTo=HAR2TIZPNnmj" target="_blank" rel="noopener"><br>
-            View notebook </a>.
+            <a class="data-link" href="https://colab.research.google.com/drive/1GaV4z7zdYSPBOuCpjmP0P3veGhrlrYtT#scrollTo=HAR2TIZPNnmj" target="_blank" rel="noopener">
+            View notebook</a>.
         </div>
     </section>
 
@@ -87,17 +98,18 @@
 
     <section>
         <div class="chart-description">
-            <h2 style="text-align:left;">Winners and Losers: <br>Tourism Market Recovery Relative to 2019</h2>
-                <h3 style="text-align: justify;">Building on the temporal and spatial patterns identified earlier, this scorecard summarizes recovery outcomes by market group relative to 2019. 
-                    While West Asia and Oceania have surpassed pre-COVID arrival levels, most Asian and long-haul markets remain below their pre-pandemic benchmarks, highlighting a structurally uneven recovery rather than a uniform rebound.
+            <h2 style="text-align:left;">Winners and Losers: Tourism Market Recovery Relative to 2019</h2>
+                <h3 style="text-align: justify;">
+                    Comparing current performance to 2019 reveals fundamental bifurcation in market recovery. West Asia (117%) and Oceania (110%) surpassed pre-COVID levels, while most Asian and long-haul markets remain substantially below—Greater China at 87%, Southeast Asia at 82%, North Asia at 79%. 
+                    This divergence represents structural transformation rather than delayed recovery. Markets that drove Singapore's pre-pandemic tourism boom have not returned to form, while previously smaller markets have emerged as disproportionate contributors, setting the stage for strategic questions about future tourism priorities.
                 </h3>
         </div>
         <div class="chart-container">
             <figure id="LocationPRO3" class="vega-wrap"style="display: flex; justify-content: center;"></figure>
         </div>
         <div class="data-box">
-            <strong>Data:</strong>
-            This scorecard summarizes recovery outcomes using the same SingStat arrivals data and 2019 = 100 index constructed in Figures 1 and 2. Average monthly arrivals in 2019 are compared with average arrivals from 2024 to the latest available month to compute a recovery index by market group. The residual “Others” category is excluded due to its negligible pre-COVID baseline.
+            <a class="data-link" href="https://colab.research.google.com/drive/1H25sLkTuO2L56Tn7nN2mqFP-u8EuVCLf" target="_blank" rel="noopener">
+            View notebook</a>.
         </div>
     </section>
 
@@ -105,23 +117,78 @@
 
     <section>
         <div class="chart-description">
-            <h2 style="text-align:left;">Tourism Dependence vs Recovery Speed</h2>
-                <h3 style="text-align: justify;">Comparing pre-COVID market importance with post-pandemic recovery reveals no clear relationship between market size and recovery speed. Several large source markets, including Southeast Asia and Greater China, remain well below pre-pandemic levels, while smaller markets such as West Asia and Oceania have exceeded their 2019 benchmarks. 
-                    This pattern suggests that recovery outcomes are shaped more by structural and policy factors than by pre-existing market dependence alone.
+            <h2 style="text-align:left;">The Strategic Dilemma</h2>
+                <h3 style="text-align: justify;">
+                    Singapore's tourism sector faces a portfolio challenge visible when plotting market size against recovery performance. Southeast Asia and Greater China—collectively 60% of 2019 arrivals—remain at just 82% and 87% of pre-pandemic levels. These are Singapore's largest source regions, and their underperformance creates substantial gaps in total volumes. 
+                    This translates to an aggregate shortfall of approximately 140,000 monthly arrivals below 2019 baselines, representing 11% of total pre-pandemic volumes. 
+                    Meanwhile, markets above 100% recovery—West Asia (116%), Oceania (106%), Americas (97%), Europe (95%)—contribute smaller baseline volumes. This creates fundamental tension: traditional high-volume markets are underperforming, while strong performers cannot fully compensate due to smaller size, raising critical questions about resource allocation and market prioritization strategies.
                 </h3>
         </div>
         <div class="chart-container">
             <figure id="LocationPRO4" class="vega-wrap"style="display: flex; justify-content: center;"></figure>
         </div>
         <div class="data-box">
-            <strong>Data:</strong>
-            This visualization combines market share in 2019 with the recovery index defined earlier. Market share is calculated as each market group’s proportion of total international visitor arrivals in 2019. These shares are then matched with market-level recovery indices to examine the relationship between pre-pandemic dependence and post-pandemic recovery.
-            <a class="data-link" href="https://colab.research.google.com/drive/11uLGIjlQuCp_GKZXGO90-WrDi8RE_vaq" target="_blank" rel="noopener"><br>
-            View notebook </a>.
+            <a class="data-link" href="https://colab.research.google.com/drive/11uLGIjlQuCp_GKZXGO90-WrDi8RE_vaq" target="_blank" rel="noopener">
+            View notebook</a>.
         </div>
     </section>
 
     <hr style="margin: 20px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">    
+
+    <section>
+        <div class="chart-description">
+            <h2 style="text-align:left;">Source Market Transformation</h2>
+                <h3 style="text-align: justify;">
+                    Differential recovery produces measurable shifts in visitor composition. Southeast Asia's share declined from 36% to 33%, while Oceania grew from 7% to 8% and West Asia expanded from under 1% to approximately 1%. 
+                    These shifts represent significant reallocation in a multi-billion dollar tourism economy, with implications for marketing spend, airline routes, and infrastructure investment. Singapore is not simply welcoming back 2019's tourist profile—the source market portfolio has been structurally rebalanced.
+                </h3>
+        </div>
+        <div class="chart-container">
+            <figure id="LocationPRO5" class="vega-wrap"style="display: flex; justify-content: center;"></figure>
+        </div>
+    </section>
+
+    <hr style="margin: 20px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">    
+
+    <section>
+        <div class="chart-description">
+            <h2 style="text-align:left;">Recovery Archetypes</h2>
+                <h3 style="text-align: justify;">
+                    K-means clustering formalizes observed patterns into three data-driven market archetypes. <strong>Cluster 1 ("Slow Giant")</strong> consists of Greater China alone (23.9% market share), exhibiting slowest recovery (38 months to 50%) and highest volatility (38.8). 
+                    <strong>Cluster 2 ("High-Volume Laggards")</strong> comprises Southeast and South Asia (43.6% combined), showing faster initial recovery but lowest current performance (84.7%) with stable, flat growth. <strong>Cluster 3 ("Diverse Performers")</strong> encompasses six regions achieving highest recovery (96.3%), ranging from West Asia's 116% to North Asia's 78.9%. 
+                    The clustering algorithm achieves a silhouette score of 0.269 across k=3 clusters, with Greater China's 38-month recovery lag contrasting sharply with Diverse Performers' 26-28 month average, quantifying a 31% difference in recovery speed. This validates that Singapore's largest pre-pandemic markets (58.6% of 2019 arrivals) now constitute the weakest recovery segments.
+                </h3>
+        </div>
+        <div class="chart-container">
+            <figure id="LocationPRO6" class="vega-wrap"style="display: flex; justify-content: center;"></figure>
+        </div>
+        <div style="background-color: #f0f8ff; border-left: 4px solid #2a7f62; padding: 15px; margin: 20px 0; font-family: Arial, sans-serif;">
+            <h4 style="margin-top: 0; color: #2a7f62;">Clustering Model Validation</h4>
+            <ul style="margin-bottom: 0; line-height: 1.8;">
+            <li><strong>Algorithm:</strong> K-means (k=3, random_state=42)</li>
+            <li><strong>Silhouette Score:</strong> 0.269 (moderate cluster cohesion)</li>
+            <li><strong>Features:</strong> Current recovery index, time to 50% recovery, volatility, 2019 market share, growth slope (all z-score normalized)</li>
+            <li><strong>Cluster Sizes:</strong> n=1 (Slow Giant), n=2 (High-Volume Laggards), n=6 (Diverse Performers)</li>
+            <li><strong>Interpretation:</strong> Three statistically distinct segments validated through unsupervised learning</li>
+            </ul>
+        </div>
+        <div class="data-box">
+            <a class="data-link" href="https://colab.research.google.com/drive/1o9JvYAyIv4JfS6nBCY545MVdiAg6u0Bd#scrollTo=D9F4EGOk1PJa" target="_blank" rel="noopener">
+            View notebook</a>.
+        </div>
+    </section>
+
+    <hr style="margin: 20px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">    
+
+    <h2 style= "text-align: justify; margin-top: 16px; margin-bottom: 0px;">
+        <strong>Conclusions</strong><br>
+    </h2>
+    <p style= "text-align: justify; margin-top: 6px;">
+        Singapore's tourism recovery defies simple "return to normal" narratives. While aggregate arrivals have rebounded, underlying market structure has fundamentally shifted. 
+        Traditional high-volume sources from Greater China (86.6% recovery) and Southeast Asia (83.0% recovery) collectively underperform by 14-17 percentage points, representing an aggregate monthly shortfall of approximately 195,000 arrivals below 2019 baselines. 
+        Meanwhile, West Asia (116.3% recovery) and Oceania (106.4% recovery) exceeded pre-pandemic benchmarks by 10-16 percentage points, though their combined market share (7.8%) limits aggregate compensatory impact. K-means clustering (k=3, silhouette=0.269) validates this structural transformation through statistical segmentation. 
+        The strategic question is whether resources should focus on recapturing lost share in familiar high-volume markets or pivoting toward emerging sources. The answer likely depends on whether current patterns reflect temporary policy lags or permanent shifts in travel preferences and regional connectivity.
+    </p>
 
 
 <script>
@@ -129,9 +196,13 @@
     let figure_PRO2_spec = "PRO_chart2.json"
     let figure_PRO3_spec = "PRO_chart3.json"
     let figure_PRO4_spec = "PRO_chart4.json"
+    let figure_PRO5_spec = "PRO_chart5.json"
+    let figure_PRO6_spec = "PRO_chart6.json"
 
     vegaEmbed('#LocationPRO1', figure_PRO1_spec)
     vegaEmbed('#LocationPRO2', figure_PRO2_spec)
     vegaEmbed('#LocationPRO3', figure_PRO3_spec)
     vegaEmbed('#LocationPRO4', figure_PRO4_spec)
+    vegaEmbed('#LocationPRO5', figure_PRO5_spec)
+    vegaEmbed('#LocationPRO6', figure_PRO6_spec)
 </script>
