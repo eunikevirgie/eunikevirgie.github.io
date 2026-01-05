@@ -46,16 +46,18 @@
 
     <section>
         <div class="chart-description">
-            <h2 style="text-align: justify;">1. The Overall Recovery Path</h2>
-                <h3 style="text-align: justify;">International visitor arrivals collapsed sharply in early 2020 and remained near zero through much of 2021. While arrivals rebounded after borders reopened in 2022, indexed comparisons show that total arrivals have not consistently returned to pre-pandemic levels, indicating an incomplete and volatile recovery.</h3>
+            <h2 style="text-align: justify;">The Overall Recovery Path</h2>
+                <h3 style="text-align: justify;">Interpretation: International visitor arrivals to Singapore collapsed sharply in early 2020 and remained near zero through much of 2021. 
+                    Although arrivals rebounded following border reopening in 2022, indexed comparisons show that total visitor volumes have not consistently returned to pre-pandemic levels. The aggregate trend therefore points to an incomplete and uneven recovery, masking substantial variation beneath the headline totals.
+                </h3>
         </div>
         <div class="chart-container">
             <figure id="LocationPRO1" style="display: flex; justify-content: center;"></figure>
         </div>
         <div class="data-box">
             <strong>Data:</strong>
-            Monthly international visitor arrivals by place of residence are retrieved from Singapore Department of Statistics <a href="https://data.gov.sg/datasets/d_d1c33009b674dcf70b8e8c790b793f28/view">(SingStat)</a>.
-            I clean and reshape the data in Python (Google Colab), group markets into regions, and construct a 2019=100 index before exporting a tidy CSV for Vega-Lite.
+            Monthly international visitor arrivals by place of residence are retrieved from the Singapore Department of Statistics <a href="https://data.gov.sg/datasets/d_d1c33009b674dcf70b8e8c790b793f28/view">(SingStat)</a>.
+            The data are cleaned and reshaped in Python using Google Colab, with individual markets grouped into regional categories. A recovery index (2019 = 100) is constructed and exported as a tidy CSV for visualization in Vega-Lite.
             <a class="data-link" href="https://colab.research.google.com/drive/1w-TZ3KzLVPgN1NcAPFTWcYuWtzgBOdsE#scrollTo=mbOQ5g4Bcb1M" target="_blank" rel="noopener"><br>
             View notebook </a>.
         </div>
@@ -65,9 +67,9 @@
 
     <section>
         <div class="chart-description">
-            <h2 style="text-align:left;">2. The Geography of Recovery: Uneven and Asynchronous Reopening</h2>
-                <h3 style="text-align: justify;">This map shows that Singapore’s tourism recovery was highly uneven across source countries, particularly during the early reopening phase. While aggregate arrivals remained extremely low through 2021, a small number of countries began to recover earlier than others. By 2021Q4, Bangladesh recorded the highest recovery index (31.6), followed by Myanmar (11.7) and India (10.7), while most other markets remained below an index value of 5.<br><br>
-                This map shows that Singapore’s tourism recovery was highly uneven across source countries, particularly during the early reopening phase. While aggregate arrivals remained extremely low through 2021, a small number of countries began to recover earlier than others. By 2021Q4, Bangladesh recorded the highest recovery index (31.6), followed by Myanmar (11.7) and India (10.7), while most other markets remained below an index value of 5.
+            <h2 style="text-align:left;">The Geography of Recovery: <br>Uneven and Asynchronous Reopening</h2>
+                <h3 style="text-align: justify;">Disaggregating the aggregate recovery reveals substantial geographic divergence across source countries. During the early reopening phase, only a small set of markets recorded meaningful recovery. By 2021Q4, Bangladesh showed the highest recovery index (31.6), followed by Myanmar (11.7) and India (10.7), while most countries remained below an index value of 5.<br><br>
+                This uneven pattern suggests that recovery was driven less by global tourism conditions and more by asynchronous border reopening and region-specific travel policies. Countries that reopened earlier or maintained more flexible outbound travel arrangements resumed limited travel to Singapore ahead of others. Although recovery broadened across regions during 2022–2023, the map indicates that convergence toward pre-pandemic levels remained incomplete, with persistent disparities across markets.
                 </h3>
         </div>
         <div class="chart-container">
@@ -75,9 +77,27 @@
         </div>
         <div class="data-box">
             <strong>Data:</strong>
-            This visualization builds on the same SingStat arrivals data and 2019=100 index construction described in Figure 1. The additional steps involve disaggregating arrivals to the country level, aggregating monthly data to quarters, and matching countries to ISO3 codes for spatial mapping. Countries without SingStat country-level data are displayed in grey to preserve global context. The map is implemented in Vega-Lite with a quarter slider that filters the data dynamically.
+            This visualization builds on the same SingStat arrivals data and 2019 = 100 index constructed in Figure 1. Additional steps include disaggregating arrivals to the country level, aggregating monthly data to quarterly frequency, and matching countries to ISO3 codes for spatial mapping. Countries without country-level SingStat data are displayed in grey to preserve global context. The map is implemented in Vega-Lite with an interactive quarter slider.
             <a class="data-link" href="https://colab.research.google.com/drive/1GaV4z7zdYSPBOuCpjmP0P3veGhrlrYtT#scrollTo=HAR2TIZPNnmj" target="_blank" rel="noopener"><br>
             View notebook </a>.
+        </div>
+    </section>
+
+    <hr style="margin: 20px 0; border: none; height: 4px; background: linear-gradient(to right, darkslategray, #36b7b4); border-radius: 2px;">       
+
+    <section>
+        <div class="chart-description">
+            <h2 style="text-align:left;">Winners and Losers: <br>Tourism Market Recovery Relative to 2019</h2>
+                <h3 style="text-align: justify;">Building on the temporal and spatial patterns identified earlier, this scorecard summarizes recovery outcomes by market group relative to 2019. 
+                    While West Asia and Oceania have surpassed pre-COVID arrival levels, most Asian and long-haul markets remain below their pre-pandemic benchmarks, highlighting a structurally uneven recovery rather than a uniform rebound.
+                </h3>
+        </div>
+        <div class="chart-container">
+            <figure id="LocationPRO3" class="vega-wrap"style="display: flex; justify-content: center;"></figure>
+        </div>
+        <div class="data-box">
+            <strong>Data:</strong>
+            This scorecard summarizes recovery outcomes using the same SingStat arrivals data and 2019 = 100 index constructed in Figures 1 and 2. Average monthly arrivals in 2019 are compared with average arrivals from 2024 to the latest available month to compute a recovery index by market group. The residual “Others” category is excluded due to its negligible pre-COVID baseline.
         </div>
     </section>
 
@@ -86,7 +106,9 @@
 <script>
     let figure_PRO1_spec = "PRO_chart1.json"
     let figure_PRO2_spec = "PRO_chart2.json"
+    let figure_PRO3_spec = "PRO_chart3.json"
 
     vegaEmbed('#LocationPRO1', figure_PRO1_spec)
     vegaEmbed('#LocationPRO2', figure_PRO2_spec)
+    vegaEmbed('#LocationPRO3', figure_PRO3_spec)
 </script>
