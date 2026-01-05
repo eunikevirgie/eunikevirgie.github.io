@@ -1,0 +1,73 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": {
+    "text": "Tourism Dependence vs Recovery Speed",
+    "subtitle": "Market share in 2019 (%) vs recovery index (2019 = 100) by source market group",
+    "anchor": "start"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/eunikevirgie/eunikevirgie.github.io/refs/heads/main/Project_data_processed_figure4.csv",
+    "format": { "type": "csv" }
+  },
+  "width": "container",
+  "height": 360,
+  "layer": [
+    {
+      "mark": { "type": "rule", "strokeWidth": 1 },
+      "encoding": { "y": { "datum": 100 } }
+    },
+    {
+      "mark": { "type": "point", "filled": true, "size": 140 },
+      "encoding": {
+        "x": {
+          "field": "market_share_2019",
+          "type": "quantitative",
+          "title": "Market Share in 2019 (%)"
+        },
+        "y": {
+          "field": "recovery_index",
+          "type": "quantitative",
+          "title": "Recovery Index (2019 = 100)"
+        },
+        "color": {
+          "condition": { "test": "datum.recovery_index >= 100", "value": "#2ca02c" },
+          "value": "#d62728"
+        },
+        "tooltip": [
+          { "field": "market_group", "type": "nominal", "title": "Market Group" },
+          {
+            "field": "market_share_2019",
+            "type": "quantitative",
+            "title": "Market share (2019, %)",
+            "format": ".2f"
+          },
+          {
+            "field": "recovery_index",
+            "type": "quantitative",
+            "title": "Recovery index",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 8,
+        "dy": -8,
+        "fontSize": 11
+      },
+      "encoding": {
+        "x": { "field": "market_share_2019", "type": "quantitative" },
+        "y": { "field": "recovery_index", "type": "quantitative" },
+        "text": { "field": "market_group" }
+      }
+    }
+  ],
+  "config": {
+    "axis": { "labelFontSize": 12, "titleFontSize": 12 },
+    "title": { "fontSize": 16, "subtitleFontSize": 12 }
+  }
+}
